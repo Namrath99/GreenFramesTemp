@@ -628,8 +628,8 @@ video {
   bottom: 100%;
 }
 
-.bottom-\[5vh\] {
-  bottom: 5vh;
+.bottom-\[5dvh\] {
+  bottom: 5dvh;
 }
 
 .left-0 {
@@ -688,12 +688,24 @@ video {
   top: 100%;
 }
 
+.top-\[10dvh\] {
+  top: 10dvh;
+}
+
 .top-\[10vh\] {
   top: 10vh;
 }
 
+.top-\[15dvh\] {
+  top: 15dvh;
+}
+
 .top-\[15vh\] {
   top: 15vh;
+}
+
+.top-\[2\.5dvh\] {
+  top: 2.5dvh;
 }
 
 .top-\[2\.5vh\] {
@@ -704,8 +716,8 @@ video {
   top: 20vh;
 }
 
-.top-\[32\.5vh\] {
-  top: 32.5vh;
+.top-\[32\.5dvh\] {
+  top: 32.5dvh;
 }
 
 .top-\[5\%\] {
@@ -716,8 +728,8 @@ video {
   top: 50vh;
 }
 
-.top-\[60vh\] {
-  top: 60vh;
+.top-\[60dvh\] {
+  top: 60dvh;
 }
 
 .z-0 {
@@ -803,12 +815,16 @@ video {
   display: none;
 }
 
+.\!h-\[42\.5dvh\] {
+  height: 42.5dvh !important;
+}
+
 .\!h-\[42\.5vh\] {
   height: 42.5vh !important;
 }
 
-.\!h-\[50vh\] {
-  height: 50vh !important;
+.\!h-\[50dvh\] {
+  height: 50dvh !important;
 }
 
 .\!h-screen {
@@ -831,6 +847,14 @@ video {
   height: 10%;
 }
 
+.h-\[100dvh\] {
+  height: 100dvh;
+}
+
+.h-\[10dvh\] {
+  height: 10dvh;
+}
+
 .h-\[10vh\] {
   height: 10vh;
 }
@@ -839,12 +863,20 @@ video {
   height: 15%;
 }
 
+.h-\[15dvh\] {
+  height: 15dvh;
+}
+
 .h-\[15vh\] {
   height: 15vh;
 }
 
-.h-\[18vh\] {
-  height: 18vh;
+.h-\[18dvh\] {
+  height: 18dvh;
+}
+
+.h-\[2\.5dvh\] {
+  height: 2.5dvh;
 }
 
 .h-\[2\.5vh\] {
@@ -859,8 +891,12 @@ video {
   height: 3.75rem;
 }
 
-.h-\[35vh\] {
-  height: 35vh;
+.h-\[35dvh\] {
+  height: 35dvh;
+}
+
+.h-\[3dvh\] {
+  height: 3dvh;
 }
 
 .h-\[3vh\] {
@@ -875,6 +911,10 @@ video {
   height: 42.5vh;
 }
 
+.h-\[4dvh\] {
+  height: 4dvh;
+}
+
 .h-\[4vh\] {
   height: 4vh;
 }
@@ -883,32 +923,60 @@ video {
   height: 5%;
 }
 
+.h-\[50dvh\] {
+  height: 50dvh;
+}
+
 .h-\[50vh\] {
   height: 50vh;
+}
+
+.h-\[5dvh\] {
+  height: 5dvh;
 }
 
 .h-\[5vh\] {
   height: 5vh;
 }
 
+.h-\[6\.5dvh\] {
+  height: 6.5dvh;
+}
+
 .h-\[6\.5vh\] {
   height: 6.5vh;
+}
+
+.h-\[60dvh\] {
+  height: 60dvh;
 }
 
 .h-\[60vh\] {
   height: 60vh;
 }
 
-.h-\[63\.5vh\] {
-  height: 63.5vh;
+.h-\[63\.5dvh\] {
+  height: 63.5dvh;
+}
+
+.h-\[65dvh\] {
+  height: 65dvh;
 }
 
 .h-\[65vh\] {
   height: 65vh;
 }
 
+.h-\[7\.5dvh\] {
+  height: 7.5dvh;
+}
+
 .h-\[7\.5vh\] {
   height: 7.5vh;
+}
+
+.h-\[70dvh\] {
+  height: 70dvh;
 }
 
 .h-\[70vh\] {
@@ -943,6 +1011,10 @@ video {
   height: 100vh;
 }
 
+.max-h-\[35dvh\] {
+  max-height: 35dvh;
+}
+
 .max-h-\[35vh\] {
   max-height: 35vh;
 }
@@ -965,6 +1037,10 @@ video {
 
 .min-h-\[10\%\] {
   min-height: 10%;
+}
+
+.min-h-\[18dvh\] {
+  min-height: 18dvh;
 }
 
 .min-h-\[18vh\] {
@@ -1477,6 +1553,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-\[1dvh\] {
+  padding-top: 1dvh;
+  padding-bottom: 1dvh;
+}
+
 .py-\[1vh\] {
   padding-top: 1vh;
   padding-bottom: 1vh;
@@ -1498,20 +1579,24 @@ video {
   padding-top: 0.5rem;
 }
 
-.pt-\[10vh\] {
-  padding-top: 10vh;
+.pt-\[10dvh\] {
+  padding-top: 10dvh;
 }
 
-.pt-\[12vh\] {
-  padding-top: 12vh;
+.pt-\[12dvh\] {
+  padding-top: 12dvh;
+}
+
+.pt-\[15dvh\] {
+  padding-top: 15dvh;
 }
 
 .pt-\[15vh\] {
   padding-top: 15vh;
 }
 
-.pt-\[50vh\] {
-  padding-top: 50vh;
+.pt-\[50dvh\] {
+  padding-top: 50dvh;
 }
 
 .text-left {
@@ -1527,6 +1612,10 @@ video {
   line-height: 2rem;
 }
 
+.text-\[1\.5dvh\] {
+  font-size: 1.5dvh;
+}
+
 .text-\[1\.5vh\] {
   font-size: 1.5vh;
 }
@@ -1539,28 +1628,52 @@ video {
   font-size: 2vh;
 }
 
+.text-\[clamp\(\.05rem\2c 1rem\2c 2\.5dvh\)\] {
+  font-size: clamp(.05rem,1rem,2.5dvh);
+}
+
 .text-\[clamp\(\.05rem\2c 1rem\2c 2\.5vh\)\] {
   font-size: clamp(.05rem,1rem,2.5vh);
+}
+
+.text-\[clamp\(\.25rem\2c 1rem\2c 2\.5dvh\)\] {
+  font-size: clamp(.25rem,1rem,2.5dvh);
 }
 
 .text-\[clamp\(\.25rem\2c 1rem\2c 2\.5vh\)\] {
   font-size: clamp(.25rem,1rem,2.5vh);
 }
 
-.text-\[clamp\(\.5rem\2c 1\.25rem\2c 3vh\)\] {
-  font-size: clamp(.5rem,1.25rem,3vh);
+.text-\[clamp\(\.5rem\2c 1\.25rem\2c 3dvh\)\] {
+  font-size: clamp(.5rem,1.25rem,3dvh);
+}
+
+.text-\[clamp\(\.5rem\2c 1\.25rem\2c 7dvh\)\] {
+  font-size: clamp(.5rem,1.25rem,7dvh);
 }
 
 .text-\[clamp\(\.5rem\2c 1\.25rem\2c 7vh\)\] {
   font-size: clamp(.5rem,1.25rem,7vh);
 }
 
+.text-\[clamp\(\.5rem\2c 1rem\2c 3\.5dvh\)\] {
+  font-size: clamp(.5rem,1rem,3.5dvh);
+}
+
 .text-\[clamp\(\.5rem\2c 1rem\2c 3\.5vh\)\] {
   font-size: clamp(.5rem,1rem,3.5vh);
 }
 
+.text-\[clamp\(\.5rem\2c 1rem\2c 3\.75dvh\)\] {
+  font-size: clamp(.5rem,1rem,3.75dvh);
+}
+
 .text-\[clamp\(\.5rem\2c 1rem\2c 3\.75vh\)\] {
   font-size: clamp(.5rem,1rem,3.75vh);
+}
+
+.text-\[clamp\(\.5rem\2c 1rem\2c 5dvh\)\] {
+  font-size: clamp(.5rem,1rem,5dvh);
 }
 
 .text-\[clamp\(\.5rem\2c 1rem\2c 5vh\)\] {
@@ -1571,8 +1684,16 @@ video {
   font-size: clamp(0.25rem,1.5rem,15vh);
 }
 
+.text-\[clamp\(0\.25rem\2c 1rem\2c 5dvh\)\] {
+  font-size: clamp(0.25rem,1rem,5dvh);
+}
+
 .text-\[clamp\(0\.25rem\2c 1rem\2c 5vh\)\] {
   font-size: clamp(0.25rem,1rem,5vh);
+}
+
+.text-\[clamp\(0\.5rem\2c 1\.5rem\2c 10dvh\)\] {
+  font-size: clamp(0.5rem,1.5rem,10dvh);
 }
 
 .text-\[clamp\(0\.5rem\2c 1\.5rem\2c 10vh\)\] {
@@ -1610,28 +1731,44 @@ video {
   line-height: 1.25rem;
 }
 
+.leading-\[2\.5dvh\] {
+  line-height: 2.5dvh;
+}
+
 .leading-\[2\.5vh\] {
   line-height: 2.5vh;
+}
+
+.leading-\[3\.5dvh\] {
+  line-height: 3.5dvh;
 }
 
 .leading-\[3\.5vh\] {
   line-height: 3.5vh;
 }
 
-.leading-\[3vh\] {
-  line-height: 3vh;
+.leading-\[3dvh\] {
+  line-height: 3dvh;
+}
+
+.leading-\[4dvh\] {
+  line-height: 4dvh;
 }
 
 .leading-\[4vh\] {
   line-height: 4vh;
 }
 
+.leading-\[5dvh\] {
+  line-height: 5dvh;
+}
+
 .leading-\[5vh\] {
   line-height: 5vh;
 }
 
-.leading-\[7vh\] {
-  line-height: 7vh;
+.leading-\[7dvh\] {
+  line-height: 7dvh;
 }
 
 .leading-none {
@@ -1923,12 +2060,20 @@ select {
 }
 
 @media not all and (min-width: 768px) {
+  .max-md\:top-\[-22\.5dvh\] {
+    top: -22.5dvh;
+  }
+
   .max-md\:top-\[-22\.5vh\] {
     top: -22.5vh;
   }
 
   .max-md\:top-\[27\.5vh\] {
     top: 27.5vh;
+  }
+
+  .max-md\:top-\[60dvh\] {
+    top: 60dvh;
   }
 
   .max-md\:top-\[60vh\] {
@@ -1946,12 +2091,20 @@ select {
     display: flex;
   }
 
+  .max-md\:h-\[10dvh\] {
+    height: 10dvh;
+  }
+
   .max-md\:h-\[10vh\] {
     height: 10vh;
   }
 
   .max-md\:h-\[5rem\] {
     height: 5rem;
+  }
+
+  .max-md\:h-\[60dvh\] {
+    height: 60dvh;
   }
 
   .max-md\:h-\[60vh\] {
@@ -1972,12 +2125,24 @@ select {
     bottom: 0px;
   }
 
+  .max-sm\:top-\[-17\.5dvh\] {
+    top: -17.5dvh;
+  }
+
   .max-sm\:top-\[-17\.5vh\] {
     top: -17.5vh;
   }
 
+  .max-sm\:top-\[32\.5dvh\] {
+    top: 32.5dvh;
+  }
+
   .max-sm\:top-\[32\.5vh\] {
     top: 32.5vh;
+  }
+
+  .max-sm\:top-\[60dvh\] {
+    top: 60dvh;
   }
 
   .max-sm\:top-\[60vh\] {
@@ -2017,14 +2182,26 @@ select {
     padding-top: 10vh;
   }
 
+  .max-sm\:pt-\[5dvh\] {
+    padding-top: 5dvh;
+  }
+
   .max-sm\:pt-\[5vh\] {
     padding-top: 5vh;
   }
 }
 
 @media (min-width: 640px) {
+  .sm\:top-\[10dvh\] {
+    top: 10dvh;
+  }
+
   .sm\:top-\[10vh\] {
     top: 10vh;
+  }
+
+  .sm\:top-\[27\.5dvh\] {
+    top: 27.5dvh;
   }
 
   .sm\:top-\[27\.5vh\] {
@@ -2033,6 +2210,10 @@ select {
 
   .sm\:h-3\/4 {
     height: 75%;
+  }
+
+  .sm\:pt-\[15dvh\] {
+    padding-top: 15dvh;
   }
 
   .sm\:pt-\[15vh\] {
@@ -2051,12 +2232,24 @@ select {
 }
 
 @media (min-width: 768px) {
+  .md\:top-\[-22dvh\] {
+    top: -22dvh;
+  }
+
   .md\:top-\[-22vh\] {
     top: -22vh;
   }
 
+  .md\:top-\[28dvh\] {
+    top: 28dvh;
+  }
+
   .md\:top-\[28vh\] {
     top: 28vh;
+  }
+
+  .md\:top-\[63\.5dvh\] {
+    top: 63.5dvh;
   }
 
   .md\:top-\[63\.5vh\] {
@@ -2082,6 +2275,10 @@ select {
     display: none;
   }
 
+  .md\:h-\[63\.5dvh\] {
+    height: 63.5dvh;
+  }
+
   .md\:h-\[63\.5vh\] {
     height: 63.5vh;
   }
@@ -2100,6 +2297,10 @@ select {
 
   .md\:pb-0 {
     padding-bottom: 0px;
+  }
+
+  .md\:pt-\[14dvh\] {
+    padding-top: 14dvh;
   }
 
   .md\:pt-\[14vh\] {
@@ -2145,20 +2346,24 @@ select {
     top: 0px;
   }
 
-  .xl\:top-\[-24\.5vh\] {
-    top: -24.5vh;
+  .xl\:top-\[-24\.5dvh\] {
+    top: -24.5dvh;
   }
 
   .xl\:top-\[0\] {
     top: 0;
   }
 
+  .xl\:top-\[15dvh\] {
+    top: 15dvh;
+  }
+
   .xl\:top-\[15vh\] {
     top: 15vh;
   }
 
-  .xl\:top-\[25\.5vh\] {
-    top: 25.5vh;
+  .xl\:top-\[25\.5dvh\] {
+    top: 25.5dvh;
   }
 
   .xl\:block {
@@ -2173,12 +2378,16 @@ select {
     height: 100% !important;
   }
 
+  .xl\:h-\[15dvh\] {
+    height: 15dvh;
+  }
+
   .xl\:h-\[15vh\] {
     height: 15vh;
   }
 
-  .xl\:h-\[19vh\] {
-    height: 19vh;
+  .xl\:h-\[19dvh\] {
+    height: 19dvh;
   }
 
   .xl\:h-\[60vh\] {
@@ -2205,8 +2414,16 @@ select {
     width: 100%;
   }
 
+  .xl\:pt-\[15dvh\] {
+    padding-top: 15dvh;
+  }
+
   .xl\:pt-\[15vh\] {
     padding-top: 15vh;
+  }
+
+  .xl\:pt-\[19dvh\] {
+    padding-top: 19dvh;
   }
 
   .xl\:pt-\[19vh\] {
