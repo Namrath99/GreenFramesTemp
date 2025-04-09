@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link href="/GreenFramesTemp/dist/output.css" rel="stylesheet">
+    <link href="../dist/output.css" rel="stylesheet">
 </head>
 <body class="h-[100dvh] w-full min-w-[350px] min-h-[350px] bg-red-300">
   <!-- fixed the min h and w based on window resizing and content fit -->
@@ -14,7 +14,7 @@
       <!-- in the above header i had to put z-20 for the mobile-menu to overlay on the rest of the body to be visible -->
         <div class="flex w-full md:w-[90%] h-full mx-auto">
             <div class="flex w-2/3 md:w-1/2 justify-left sm:justify-left ml-4 md:ml-0 items-center">
-                <img src="/GreenFramesTemp/Unknown.jpeg" alt="logo" class="h-1/2">
+                <img src="assets/Unknown.jpeg" alt="logo" class="h-1/2">
                 <h1 class="font-bold text-gray-800 text-[clamp(0.5rem,1.5rem,10dvh)] md:text-3xl lg:text-4xl leading-none">Green Frames</h1> <!--added leading-none to make the text fit inside header for devices as small as apple watch se 40 mm -->
             </div>
             <!-- nav bar for large screens -->
@@ -510,7 +510,7 @@ function generateMobilePost(state, post, index) {
 return `<div data-index="${index}" class="main w-full flex flex-col h-[100dvh]  max-sm:pt-[5dvh] sm:pt-[15dvh] md:pt-[14dvh] xl:pt-[19dvh] snap-start snap-always">  
 <div class="post-card w-[80%] h-[70dvh] flex flex-row justify-center items-center mx-auto my-auto">
   <div class="image-side w-full  bg-black relative h-full flex flex-col justify-center items-center">
-    <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
+    <a ${post.Social?`href=${post.Social} target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
     ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4dvh]">❗</button>`:""}
       <div class="image-container max-md:h-[60dvh] md:h-[63.5dvh] absolute top-0 transition-all duration-700 ease-in-out w-full">
         <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
@@ -891,7 +891,7 @@ function fillEmptyPosts(state, currentpostat) {
                 <div class="image-container h-[60dvh]">
                   <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
                 </div>
-                ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
+                <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
               </div>
               <div class="info-side w-[40%] flex flex-col bg-green-300 h-full">
                 <div class="info-carousel w-full h-[85%] relative overflow-hidden transition-all duration-700 ease-in-out">
