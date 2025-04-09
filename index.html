@@ -1,0 +1,1837 @@
+<!-- npx tailwindcss -i ./src/css/styles.css -o ./dist/output.css --watch -->
+<!-- to watch for changes in all the files in the src folder including js and all html files-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link href="../dist/output.css" rel="stylesheet">
+</head>
+<body class="h-screen w-full min-w-[350px] min-h-[350px] bg-red-300">
+  <!-- fixed the min h and w based on window resizing and content fit -->
+    <header class="w-full fixed top-0 bg-green-200 h-[10vh] xl:h-[15vh] z-30">
+      <!-- in the above header i had to put z-20 for the mobile-menu to overlay on the rest of the body to be visible -->
+        <div class="flex w-full md:w-[90%] h-full mx-auto">
+            <div class="flex w-2/3 md:w-1/2 justify-left sm:justify-left ml-4 md:ml-0 items-center">
+                <img src="assets/Unknown.jpeg" alt="logo" class="h-1/2">
+                <h1 class="font-bold text-gray-800 text-[clamp(0.5rem,1.5rem,10vh)] md:text-3xl lg:text-4xl leading-none">Green Frames</h1> <!--added leading-none to make the text fit inside header for devices as small as apple watch se 40 mm -->
+            </div>
+            <!-- nav bar for large screens -->
+            <nav class="hidden md:flex flex-row w-1/2 h-1/2 mx-auto justify-around items-end my-auto">
+                <a href="#" class="hover:text-gray-400 text-center p-1 w-1/6 h-auto">Home</a>
+                <a href="#" class="hover:text-gray-400 text-center p-1 w-1/6 h-auto">Upload</a>
+                <a href="#" class="hover:text-gray-400 text-center p-1 w-1/6 h-auto">Favorites</a>
+                <a href="#" class="hover:text-gray-400 text-center p-1 w-1/6 h-auto">Yours</a>
+            </nav>
+            <div class="md:hidden relative my-auto flex w-1/3 justify-end h-1/2">
+              <!-- the below <p> makes the button unclickable between to complete the animations -->
+            <p id="overlay" class="md:hidden block absolute top-0 left-auto mr-4 w-12 h-full z-[-1]"></p>
+            <button id="menu-toggle" class="md:hidden my-auto mr-4 h-full w-12 text-[clamp(0.25rem,1rem,5vh)] leading-[5vh]">|||</button> <!--text-[clamp(0.25rem,1rem,5vh)] leading-[5vh] set these temporarily to make the text inside responsive to vertical resizing, don't need this if not using text-->
+          </div>
+              <!-- nav bar for smaller screens -->
+              <nav id="mobile-menu" class="hidden flex flex-col absolute top-[10vh] right-0 bg-green-200 p-4 w-48 shadow-lg overflow-hidden">
+              <!--elements to make the bricks broken-fall effect -->
+              <a href="#" class="menu-item block px-4 py-2 bg-green-700 opacity-0 transform translate-x-full transition-all duration-300">Home</a>
+                <a href="#" class="menu-item block px-4 py-2 bg-green-700 opacity-0 transform translate-x-full transition-all duration-500">Upload</a>
+                <a href="#" class="menu-item block px-4 py-2 bg-green-700 opacity-0 transform translate-x-full transition-all duration-700">Favorites</a>
+                <a href="#" class="menu-item block px-4 py-2 bg-green-700 opacity-0 transform translate-x-full transition-all duration-900">Yours</a>
+              <!-- to make the bricks falls one after the other -->
+                <!-- <a class="menu-item transform translate-x-full transition-all ease-linear duration-500 block px-4 py-2 bg-green-700 opacity-0">Home</a>
+                <a class="menu-item transform translate-x-full transition-all ease-linear duration-500 block px-4 py-2 bg-green-700 opacity-0">Home</a>
+                <a class="menu-item transform translate-x-full transition-all ease-linear duration-500 block px-4 py-2 bg-green-700 opacity-0">Home</a>
+                <a class="menu-item transform translate-x-full transition-all ease-linear duration-500 block px-4 py-2 bg-green-700 opacity-0">Home</a> -->
+
+              </nav>
+              <script>
+                // //to make the bricks broken-fall effect
+                document.getElementById("menu-toggle").addEventListener("click", function() {
+                  document.getElementById("overlay").classList.replace("z-[-1]", "z-20");
+                  let menu = document.getElementById("mobile-menu");
+                  let menuItems = document.querySelectorAll(".menu-item");
+              
+                  if (menu.classList.contains("hidden")) {
+                    menu.classList.remove("hidden");
+                    setTimeout(() => {
+                      menuItems.forEach((item, index) => {
+                        setTimeout(() => {
+                          item.classList.remove("opacity-0", "translate-x-full");
+                        }, index * 100);
+                      });
+                    }, 10);
+
+                    // Home → 0ms delay 300ms duration
+                    // About → 100ms delay 500ms duration
+                    // Gallery → 200ms delay 700ms duration
+                    // Contact → 300ms delay 900ms duration
+                  } else {
+                    menuItems.forEach((item, index) => {
+                      setTimeout(() => {
+                        item.classList.add("opacity-0", "translate-x-full");
+                      }, (menuItems.length - index - 1) * 100);
+                    });
+              
+                    setTimeout(() => {
+                      menu.classList.add("hidden");
+                    }, 500);
+                  }
+                  setTimeout(() => {
+                    document.getElementById("overlay").classList.replace("z-20", "z-[-1]");
+                  }, 700);
+                });
+
+              //to make the bricks falls one after the other
+              // document.getElementById("menu-toggle").addEventListener("click", function() {
+              //     document.getElementById("overlay").classList.replace("z-[-1]", "z-20");
+              //     let menu = document.getElementById("mobile-menu");
+              //     let menuItems = document.querySelectorAll(".menu-item");
+              
+              //     if (menu.classList.contains("hidden")) {
+              //       menu.classList.remove("hidden");
+              //       setTimeout(() => {
+              //         menuItems.forEach((item, index) => {
+              //           setTimeout(() => {
+              //             item.classList.remove("opacity-0", "translate-x-full");
+              //           }, index * 250);
+              //         });
+              //       }, 10);
+              //     } else {
+              //       menuItems.forEach((item, index) => {
+              //         setTimeout(() => {
+              //           item.classList.add("opacity-0", "translate-x-full");
+              //         }, (menuItems.length - index - 1) * 100);
+              //       });
+              
+              //       setTimeout(() => {
+              //         menu.classList.add("hidden");
+              //       }, 500);
+              //     }
+              //     setTimeout(() => {
+              //       document.getElementById("overlay").classList.replace("z-20", "z-[-1]");
+              //     }, 1000);
+              //   });
+              </script>
+              
+
+        </div>
+    </header>
+
+    <nav id="internal-nav" class="w-[90%] max-sm:w-full flex flex-row fixed max-sm:bottom-0 sm:top-[10vh] xl:top-[15vh] h-[5vh] max-sm:mx-0 items-center mx-[5%] z-20">
+      <!-- had to mention "max-sm:flex max-sm:items-center max-sm:justify-center" to make the items centered vertically in 100% cases  -->
+        <a href="#" id="filter-trigger" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)]">Filters</a>
+        <a href="#" id="yours-heading" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-auto max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)] hidden">Your Posts</a>
+        <a href="#" id="favorites-heading" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)] hidden">Favorities</a>
+        <a href="#" id="favorite-button" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)]">☆</a>
+
+    </nav>
+<div id="home" class="w-full h-screen">
+  <div id="wrapper" class="h-screen w-full  snap-y snap-mandatory overflow-y-scroll">  
+    
+  </div>
+</div>    
+<div id="upload" class="hidden h-screen w-full overflow-y-scroll pt-[10vh] xl:pt-[15vh]">
+  <div class="flex flex-col items-center justify-start px-4" id="upload-container">
+    <form id="upload-form" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md space-y-2">
+      <h2 class="text-xl font-bold text-center">🌿 Upload to Green Frames</h2>
+      <p class="text-sm text-gray-500">Image (max-size:10MB)</p>
+      <input type="file" id="fileInput" accept="image/*" required class="w-full border p-2 rounded">
+     
+      <p class="text-sm text-gray-500">Your username <span id="autofilled" class="hidden">(autofilled)</span></p>
+      <input type="text" id="photographer-name" class="w-full border p-2 rounded bg-gray-100">
+      
+  
+      <input type="url" id="social" placeholder="https://your.social/link (optional)" class="w-full border p-2 rounded">
+  
+      <textarea id="moment" placeholder="At the moment (Max 1020 characters, ~150 words)" class="w-full border p-2 rounded" required></textarea>
+      <textarea id="facts" placeholder="Facts (Max 1020 characters, ~150 words)" class="w-full border p-2 rounded" required></textarea>
+      <textarea id="atrocities" placeholder="Atrocities (Max 1020 characters, ~150 words)" class="w-full border p-2 rounded" required></textarea>
+  
+      <select id="classification" required class="">
+        <option value="">-- Select Classification --</option>
+        <option value="flora">Flora</option>
+        <option value="fauna">Fauna</option>
+      </select>
+  
+      <select 
+      id="sub-classification" 
+      required 
+      class=""
+    ></select>
+      
+      <select id="rarity" required class="w-full border p-2 rounded hidden">
+        <option value="">-- Select Rarity --</option>
+        <option value="common">Common</option>
+        <option value="native">Native</option>
+        <option value="exotic">Exotic</option>
+      </select>
+  
+      <button type="submit" id="submit-button" class="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700">Upload</button>
+    </form>
+  
+    <p id="AfterUpload" class="mt-4 text-center font-semibold"></p>
+    <button id="upload-more" class="hidden mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Upload More</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const cloudName = "dumtyosqg";
+  const uploadPreset = "green_frames_upload";
+
+  const photographerInput = document.getElementById("photographer-name");
+  const socialInput = document.getElementById("social");
+  const classificationSelect = document.getElementById("classification");
+  const subClassification = document.getElementById("sub-classification");
+  const raritySelect = document.getElementById("rarity");
+  const uploadForm = document.getElementById("upload-form");
+  const uploadMoreBtn = document.getElementById("upload-more");
+  const submitBtn = document.getElementById("submit-button");
+  const AfterUpload = document.getElementById("AfterUpload")
+  // Photographer-name from localStorage or generate
+  let storedName = localStorage.getItem("photographer-name");
+  if (storedName) {
+    photographerInput.value = storedName;
+    photographerInput.readOnly = true;
+    document.getElementById("autofilled").classList.remove("hidden");
+
+  }
+  
+
+  // Handle classification logic
+  classificationSelect.addEventListener("change", function () {
+    const type = this.value;
+    subClassification.innerHTML = "";
+    subClassification.classList.add("hidden");
+    raritySelect.classList.add("hidden");
+
+    if (type === "flora") {
+      subClassification.classList.remove("hidden");
+      subClassification.innerHTML = `
+        <option value="">-- Flora Type --</option>
+        <option value="water based">Water Based</option>
+        <option value="land based">Land Based</option>
+      `;
+    } else if (type === "fauna") {
+      subClassification.classList.remove("hidden");
+      subClassification.innerHTML = `
+        <option value="">-- Fauna Type --</option>
+        <option value="land dwellers">Land Dwellers</option>
+        <option value="amphibious">Amphibious</option>
+        <option value="aquatic">Aquatic</option>
+      `;
+    }
+
+    subClassification.addEventListener("change", () => {
+      raritySelect.classList.remove("hidden");
+    });
+  });
+
+  uploadForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  // console.log("📨 Form Submitted");
+  const file = document.getElementById("fileInput").files[0];
+  if (!file || file.size > 10 * 1024 * 1024) {
+    alert("Image is required and must be under 10MB.");
+    return;
+  }
+
+  // Generate and store username if not already stored
+  // let storedName = localStorage.getItem("photographer-name");
+  if (!storedName) {
+    const inputName = photographerInput.value.trim();
+    if (!inputName) {
+      alert("Please enter your name.");
+      return;
+    }
+    storedName = inputName + Date.now().toString().slice(-4);
+    localStorage.setItem("photographer-name", storedName);
+    photographerInput.value = storedName;
+    // photographerInput.readOnly = true;
+    // document.getElementById("autofilled").classList.remove("hidden");
+  }
+
+  const moment = document.getElementById("moment").value.trim();
+  const facts = document.getElementById("facts").value.trim();
+  const atrocities = document.getElementById("atrocities").value.trim();
+  const classification = classificationSelect.value;
+  const subClass = subClassification.value;
+  const rarity = raritySelect.value;
+  const social = socialInput.value.trim();
+  if (moment.length > 1020 || facts.length > 1020 || atrocities.length > 1020) {
+    console.log("Moment Length:", moment.length);
+console.log("Facts Length:", facts.length);
+console.log("Atrocities Length:", atrocities.length);
+  alert("Each field must be 1024 characters or fewer.");
+  return;
+}
+
+
+  if (!moment || !facts || !atrocities || !classification || !subClass || !rarity || !photographerInput.value) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  const fullClassification = `${classification}-${subClass}-${rarity}`;
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", uploadPreset);
+  // formData.append("folder", "gallery");
+  formData.append("tags", "gallery");
+  formData.append("context", 
+    `Photographer_name=${photographerInput.value}` +
+    `|Social=${social}` +
+    `|At_the_moment=${moment}` +
+    `|Facts=${facts}` +
+    `|Atrocities=${atrocities}` +
+    `|Classification=${fullClassification}`+
+    `|Rejected=false`
+  );
+
+  submitBtn.textContent = "Uploading...";
+
+  try {
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      method: "POST",
+      body: formData
+    });
+
+    if (!response.ok) throw new Error("Upload failed");
+    AfterUpload.innerHTML = `✅ Image uploaded successfully!<br>By: ${localStorage.getItem("photographer-name")}<br>(your Nature given name, remember to use it in another Browser-Account/Browser/Device)`;
+    uploadForm.classList.add("hidden");
+    uploadMoreBtn.classList.remove("hidden");
+  } catch (err) {
+    console.error(err);
+    submitBtn.textContent = "❌ Upload failed";
+    setTimeout(()=>{
+      submitBtn.textContent = "Try Again";
+    },2000)
+  }
+});
+
+
+  uploadMoreBtn.addEventListener("click", () => {
+    uploadForm.reset();
+    subClassification.classList.add("hidden");
+    raritySelect.classList.add("hidden");
+    uploadForm.classList.remove("hidden");
+    uploadMoreBtn.classList.add("hidden");
+    submitBtn.textContent= "Upload"
+    AfterUpload.textContent = "";
+
+    photographerInput.value = storedName;
+  photographerInput.readOnly = true;
+  document.getElementById("autofilled").classList.remove("hidden");
+  });
+});
+
+  </script>
+</div>
+<div id="favorites" class="hidden h-screen w-full">
+  <div id="favoritesWrapper" class="h-screen w-full  snap-y snap-mandatory overflow-y-scroll"></div>
+</div>
+<div id="yours" class="hidden h-screen w-full">
+  <div id="yoursWrapper" class="h-screen w-full  snap-y snap-mandatory overflow-y-scroll"></div>
+</div>
+  
+  <!-- Filter Box (place at bottom of body) -->
+<div id="filters-box" class="hidden fixed top-[15vh] left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-lg z-50 p-4 w-[90%] max-w-md space-y-4">
+  <h2 class="text-xl font-bold text-center">🔍 Filter Posts</h2>
+
+  <select id="filter-classification">
+    <option value="_">-- Any Classification --</option>
+    <option value="flora">Flora</option>
+    <option value="fauna">Fauna</option>
+  </select>
+  
+  <select id="filter-sub">
+    <option value="_">-- Any Subtype --</option>
+  </select>
+  
+  <select id="filter-rarity">
+    <option value="_">-- Any Rarity --</option>
+    <option value="common">Common</option>
+    <option value="native">Native</option>
+    <option value="exotic">Exotic</option>
+  </select>
+  
+
+  <div class="flex justify-between space-x-4 pt-2">
+    <button id="apply-filter" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-1/2">Apply</button>
+    <button id="reset-filter" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 w-1/2">Reset</button>
+  </div>
+</div>
+
+<div id="bottom-7.5vh" class="hidden fixed bottom-0 left-0 z-30 h-[7.5vh] flex w-full justify-around items-center bg-slate-500 transition-all duration-1000 ease-in-out  opacity-0"><!--xl:bottom-[15vh] xl:w-[32vw] xl:left-[58%] for ipad screen rotation scenario, after completing the layout for desktop carousel decide on this! can make the element xl:absolute but add 100vh from bottom to accomodate for the prepared for next post scenario-->
+  <button id="go-back" class="border-2 border-white">Go Back</button>
+  <button id="" class="border-2 border-white w-1/2">Donate</button>
+</div>
+
+
+
+    <footer class="hidden md:flex fixed w-full bottom-0 bg-green-200 h-[5vh] z-30">
+        <div class="w-[90%] h-full mx-auto flex">
+        <div class="flex h-full justify-center items-center flex-1">
+          <a id="prev-post" href="#" class="m-4 text-[clamp(.5rem,1rem,5vh)]">prev ^</a>
+          <a id="next-post" href="#" class="m-4 text-[clamp(.5rem,1rem,5vh)]">next v</a>
+        </div>
+        <div id="footer-social-icons" class="w-1/2 flex h-full justify-center items-center">
+            <a href="#" class="m-4">I</a>
+            <a href="#" class="m-4">F</a>
+            <a href="#" class="m-4">W</a>
+        </div>
+        </div>
+    </footer>
+<div id="tailwind-safelist-dummy" class="hidden snap-start -translate-x-full translate-x-0 z-[-1] z-10 z-20 !overflow-y-hidden relative bottom-[5vh]"></div>
+
+<!-- Tailwind Safelist Dummy -->
+<div class="hidden
+  snap-start snap-always snap-mandatory
+  overflow-y-scroll overflow-y-hidden !overflow-y-hidden
+  relative absolute fixed
+  z-[-1] z-0 z-10 z-20 z-30
+  w-full w-screen w-1/2 w-1/3 w-1/6 w-[80%] w-[90%] w-[60%] w-[40%] max-w-md max-sm:w-full
+  h-full h-screen h-[3vh] h-[4vh] h-[5vh] h-[6.5vh] h-[7.5vh] h-[10vh] h-[15vh] h-[18vh] h-[35vh] h-[50vh] h-[60vh] h-[63.5vh] h-[65vh] h-[70vh] h-[85%]
+  max-sm:top-[32.5vh] max-sm:top-[60vh] sm:top-[27.5vh] md:top-[28vh] md:top-[63.5vh] xl:top-[25.5vh] xl:top-[15vh]
+  top-0 top-[2.5vh] top-[10vh] top-[15vh] top-[100%] bottom-0 bottom-[5vh]
+  max-sm:h-full max-md:h-[60vh] md:h-[63.5vh] xl:h-[19vh]
+  max-sm:top-[-17.5vh] max-md:top-[-22.5vh] md:top-[-22vh] xl:top-[-24.5vh]
+  top-[32.5vh] top-[60vh]
+  min-w-[350px] min-h-[350px] min-w-[950px]
+  px-2 px-3 px-4 py-2 py-[1vh] pb-0
+  mx-auto mx-[5%] ml-4 mr-4
+  text-center text-left text-[1.5vh] text-[clamp(.05rem,1rem,2.5vh)] text-[clamp(.25rem,1rem,2.5vh)] text-[clamp(.5rem,1rem,3.5vh)] text-[clamp(.5rem,1.25rem,7vh)]
+  leading-none leading-[2.5vh] leading-[3vh] leading-[3.5vh] leading-[4vh] leading-[5vh] leading-[7vh]
+  bg-white bg-black bg-slate-300 bg-slate-400 bg-green-200 bg-green-300 bg-green-500 bg-green-600 bg-green-700 bg-yellow-500 bg-red-500
+  text-white text-gray-400 text-gray-500 text-gray-700 text-red-500 text-red-600 text-blue-400 text-green-500 text-green-600 text-green-700
+  border border-2 border-white border-green-200 border-green-500 border-red-500
+  flex flex-row flex-col justify-center justify-left justify-around justify-between justify-evenly items-center items-end items-start
+  transition-all transition-transform transition-opacity duration-300 duration-500 duration-700 ease-in-out
+  transform translate-x-0 -translate-x-full
+  opacity-0 opacity-100
+  hidden block invisible
+  rounded rounded-lg
+  space-y-2 space-y-4 space-x-4
+  hover:bg-green-600 hover:bg-red-600 hover:bg-blue-600 hover:text-gray-400
+  focus:outline-none
+  max-h-full max-w-full min-h-[18vh] min-w-full
+"></div>
+<div class="hidden another-dummy"></div>
+
+
+<!-- <div class="h-screen overflow-y-scroll snap-y snap-mandatory">
+    <section class="h-screen bg-red-300 snap-start"></section>
+    <section class="h-screen bg-green-300 snap-start"></section>
+    <section class="h-screen bg-blue-300 snap-start"></section>
+  </div> -->
+  
+
+</body>
+<script>
+
+// Animation state for intro screen
+let animationDone = false;
+const fullposts = [];
+let generatePostHTML; // global
+
+const homeState = {
+  posts: [], // previously homeposts
+  wrapper: document.getElementById("wrapper"),
+  maxLoadedIndex: -1,
+  currentPost: 0,
+  previousPost: -1,
+  viewed: [],
+  postObserver: null
+};
+const yourState = {
+  posts: [], // previously homeposts
+  wrapper: document.getElementById("yoursWrapper"),
+  maxLoadedIndex: -1,
+  currentPost: 0,
+  previousPost: -1,
+  // viewed: [],
+  postObserver: null
+};
+const favoriteState = {
+  posts: [],
+  wrapper: document.getElementById("favoritesWrapper"),
+  maxLoadedIndex: -1,
+  currentPost: 0,
+  previousPost: -1,
+  postObserver: null
+};
+
+
+let activeState = homeState; // default view
+
+
+
+
+async function fetchGalleryPosts() {
+const cloudName = "dumtyosqg";
+const tag = "gallery";
+const url = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
+
+try {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch JSON");
+
+  const data = await res.json();
+  const resources = data.resources || [];
+
+  const filteredPosts = resources
+    .filter(asset => asset.asset_folder === "gallery")
+    .map(asset => {
+      const ctx = asset.context?.custom || {};
+      return {
+      assetId: asset.asset_id,
+      publicId: asset.public_id,
+      createdAt: asset.created_at,
+      Photographer_name: ctx.Photographer_name || "",
+      Social: ctx.Social || "",
+      At_the_moment: ctx.At_the_moment || "",
+      Facts: ctx.Facts || "",
+      Atrocities: ctx.Atrocities || "",
+      Classification: ctx.Classification || ""
+    };
+    });
+
+  fullposts.push(...filteredPosts);
+
+  console.log(`[✅ Total Posts Loaded: ${fullposts.length}]`, fullposts);
+
+} catch (err) {
+  console.error("❌ Error fetching gallery:", err);
+}
+}
+// ${state===yourState?`<button class="report-icon">❗</button>`:""}
+// 
+function generateMobilePost(state, post, index) {
+return `<div data-index="${index}" class="main w-full flex flex-col h-screen  max-sm:pt-[5vh] sm:pt-[15vh] md:pt-[14vh] xl:pt-[19vh] snap-start snap-always">  
+<div class="post-card w-[80%] h-[70vh] flex flex-row justify-center items-center mx-auto my-auto">
+  <div class="image-side w-full  bg-black relative h-full flex flex-col justify-center items-center">
+    <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75vh)] leading-[4vh] bg-green-200 h-[4vh]">By: ${post.Photographer_name}</a>
+    ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4vh]">❗</button>`:""}
+      <div class="image-container max-md:h-[60vh] md:h-[63.5vh] absolute top-0 transition-all duration-700 ease-in-out w-full">
+        <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
+      </div>
+  <div class="carousel-preview max-md:h-[10vh] h-[6.5vh] bg-green-200 absolute max-md:top-[60vh] md:top-[63.5vh] transition-all duration-700 ease-in-out w-full">
+      <div class="just-a-wrapper h-full w-full px-2 py-[1vh] md:pb-0 flex flex-col">
+      <p class="text-gray-700 max-md:line-clamp-2 md:line-clamp-1 overflow-hidden text-[clamp(.25rem,1rem,2.5vh)] leading-[2.5vh]">
+        <span class="font-bold">At the Moment: </span><span>${post.At_the_moment}</span>
+      </p>
+      <a class="read-more-link text-blue-400 text-[clamp(.05rem,1rem,2.5vh)] h-[3vh]">Full info</a>
+      </div>
+  </div>
+    ${
+    state !== yourState
+      ? `  <div class="social-icons hidden max-md:flex w-full absolute top-[100%] justify-evenly items-center h-[4vh]">
+        <a href="#" class="">I</a>
+        <a href="#" class="">F</a>
+        <a href="#" class="">W</a>
+          </div>`
+      : 
+      (() => {
+          switch (post.Rejected) {
+            case "false":
+              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-yellow-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+                      </div>`;
+            case "approved":
+              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-green-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+                      </div>`;
+            default:
+              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-red-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+                      </div>`;
+          }
+        })()
+  }
+  </div>
+</div>
+</div>`;
+}
+
+function generateDesktopPost(state, post, index) {
+return `<div data-index="${index}" data-animated="false" class="main w-full flex flex-col h-screen snap-start snap-always min-w-[950px] ${state===yourState?"relative pt-[12vh]":"pt-[15vh]"}">
+      
+  
+<div class="post-card w-[80%] h-[65vh] flex flex-row justify-center items-center mx-auto my-auto">
+
+  <div class="image-side w-[60%] bg-black relative h-full flex flex-col justify-center items-center z-10">
+      <a href="#" class="PhotographerIdxl-placeholder block invisible h-[2.5vh]"></a>
+      <div class="image-container h-[60vh]">
+        <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
+      </div>
+      <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5vh] text-[1.5vh] leading-[2.5vh]">By: ${post.Photographer_name}</a>
+  </div>
+
+  <div class="info-side w-[40%] flex flex-col bg-green-300 h-full ${(state==homeState && !state.viewed.includes(index))?"-translate-x-full opacity-0 transition-all duration-700 ease-in-out":""}">
+
+    <div class="info-carousel w-full h-[85%] relative overflow-hidden transition-all duration-700 ease-in-out">
+       <div class="carousel-container w-full h-full flex transition-transform duration-500 ease-in-out ">
+        <div class="first-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+          <div class="slide1-content min-h-[18vh] max-h-full"> 
+            <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>At The Moment</span></div>
+            <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.At_the_moment}</p>
+          </div>
+          <div class="flex-auto bg-black"></div> 
+        </div>
+  
+        <div class="second-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+          <div class="slide2-content min-h-[18vh] max-h-full"> 
+            <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Facts</span></div>
+            
+            <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Facts}</p>
+          </div>
+          <div class="flex-auto bg-black"></div> 
+        </div>
+  
+        <div class="third-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+          <div class="slide3-content min-h-[18vh] max-h-full"> 
+            <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Atrocities</span></div><!--made 7vh highest size for the text below to not overlay on this no matter how small the window is resized-->
+            
+            <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Atrocities}</p>
+          </div>
+          <div class="flex-auto bg-black"></div> 
+        </div>
+  
+    </div>
+    <button class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white  rounded-full focus:outline-none">←</button>
+    <button class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white  rounded-full focus:outline-none">→</button>
+  </div>
+
+  <div class="button-section h-[15%] flex justify-center items-center">
+    ${state===yourState?`<button class="report-icon text-red-600 border-2 border-red-500 px-3 h-1/2 w-1/3 text-center text-lg">Report</button>`
+    :`<button class="donate-button border-2 border-green-500 px-3 h-1/2 w-1/3 text-center text-lg">Donate</button>`
+  }
+  </div>
+
+  </div>
+</div>
+
+${state === yourState?
+(() => {
+          switch (post.Rejected) {
+            case "false":
+              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-yellow-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+                      </div>`;
+            case "approved":
+              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-green-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+                      </div>`;
+            default:
+              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-red-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+                      </div>`;
+          }
+        })()
+  :""}
+</div>
+`;
+}
+const isMobile = window.innerWidth < 1280;
+
+
+// Start app: Show animation, fetch posts, and manage visibility
+async function startAppFlow(filter=null) {
+  showLoadingAnimation();
+  homeState.wrapper.scrollTop=0;
+
+  if (homeState.postObserver) {
+    homeState.postObserver.disconnect();
+    homeState.postObserver = null;
+  }
+
+  homeState.wrapper.innerHTML = "";
+  homeState.currentPost = 0;
+  homeState.previousPost = -1;
+  homeState.viewed = [];
+  homeState.maxLoadedIndex = -1;
+
+  generatePostHTML = isMobile ? generateMobilePost : generateDesktopPost;
+  if (fullposts.length === 0) {
+  await fetchGalleryPosts(); // Only fetch once
+
+const lastTopAsset = localStorage.getItem("lastLoadTopPost");
+if (!lastTopAsset && fullposts.length > 0) {
+  // First-time user: set current top post
+  localStorage.setItem("lastLoadTopPost", fullposts[0].assetId);
+} else if (lastTopAsset) {
+  // Returning user: shuffle posts after previously seen top
+  const lastStoredIndex = fullposts.findIndex(p => p.assetId === lastTopAsset);
+
+  if (lastStoredIndex >= 0 && lastStoredIndex < fullposts.length - 1) {
+    const seenPart = fullposts.slice(0, lastStoredIndex);
+    const unseenPart = fullposts.slice(lastStoredIndex);
+
+    // Fisher-Yates shuffle
+    for (let i = unseenPart.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [unseenPart[i], unseenPart[j]] = [unseenPart[j], unseenPart[i]];
+    }
+
+    // Re-assign fullposts
+    fullposts.length = 0;
+    fullposts.push(...seenPart, ...unseenPart);
+  }
+}
+
+
+}
+
+
+// If no filter, use all posts
+if (!filter || filter === "_-_-_") {
+  homeState.posts = [...fullposts];
+  } else {
+    const [type, subtype, rarity] = filter.split("-");
+    homeState.posts = fullposts.filter(post => {
+      const [pType, pSub, pRarity] = post.Classification.split("-");
+      return (
+        (type === "_" || type === pType) &&
+        (subtype === "_" || subtype === pSub) &&
+        (rarity === "_" || rarity === pRarity)
+      );
+    });
+  }  console.log(`[✅ filtered Posts Loaded: ${homeState.posts.length}]`, homeState.posts);
+
+  observePostNavigation();  // Initialize once
+fetchPosts(homeState, 0, 4);         // It will now observe as it renders
+
+  // Always hide the animation screen after exactly 5 seconds
+  setTimeout(() => {
+    hideLoadingAnimation();
+  }, 2000);
+}
+
+// Show full-screen animation overlay (optional element to add visually)
+function showLoadingAnimation() {
+  console.log("⏳ Showing 5-sec animation screen...");
+  // You can make a loading screen visible here (e.g., remove hidden class)
+}
+
+// Hide full-screen animation overlay
+function hideLoadingAnimation() {
+  console.log("✅ Hiding animation screen");
+  animationDone = true;
+  // You can hide the loading screen here (e.g., add hidden class)
+}
+
+// Fetch and render a set of posts from index `start` to `end`
+function fetchPosts(state, start, end, currentpostat = null, resolve = () => {}, reject = () => {}) {
+  console.log(`📦 Trying to Fetch posts from ${start} to ${end}`);
+
+for (let i = start; i <= end && i < state.posts.length; i++) {
+  if (currentpostat != null && currentpostat > state.currentPost) {
+    console.log(`⛔ Aborting fetch: currentpostat (${currentpostat}) > currentpost (${state.currentPost})`);
+    reject("Aborted fetch due to scroll back");
+    return;
+  }
+
+  if(!state.wrapper.children[i]){
+  const postHTML = generatePostHTML(state, state.posts[i], i);
+  state.wrapper.insertAdjacentHTML("beforeend", postHTML);
+  if (i > state.maxLoadedIndex) state.maxLoadedIndex = i;
+
+  const newPost = state.wrapper.querySelector(`.main[data-index="${i}"]`);
+  if (newPost && state.postObserver) {
+    state.postObserver.observe(newPost);
+    console.log(`📡 Observing new post ${i}`);
+  }
+}
+else{
+  console.log(`Post ${i} already exists`);
+}
+}
+
+resolve(); // done loading
+}
+
+
+
+
+
+
+//for home Observer to track currently visible post and trigger logic
+function observePostNavigation() {
+
+  homeState.postObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const currentPostAt = parseInt(entry.target.getAttribute("data-index"));
+        if (currentPostAt !== homeState.currentPost) {
+          console.log(`👀 Viewing Post: ${currentPostAt}`);
+          homeState.previousPost= homeState.currentPost;
+          homeState.currentPost = currentPostAt;
+        }
+        updateFavoriteButton(homeState.posts[currentPostAt]?.assetId);
+                if (!isMobile) {
+                  initializeCarousel(entry.target);
+                  console.log("inside if block");
+                }else{
+                  setupReadMoreListener(homeState, entry.target,currentPostAt); //uncomment after making the listener function reusable
+                }
+                 
+                if (entry.target.dataset.animated === "false") {
+            setTimeout(() => {
+                const info_side = entry.target.querySelector(".info-side"); // ⬅️ Add the dot (important)
+                if (info_side) {
+                  info_side.classList.remove("-translate-x-full","opacity-0");
+                  info_side.classList.add("translate-x-0","opacity-100");
+                  entry.target.dataset.animated = "true";
+                  console.log(`🎞️ Animated post ${currentPostAt}`);
+                }
+            }, 500); // You chose 500ms delay here
+          }
+          homeState.viewed.push(currentPostAt);//to keep track of viewed posts so far no matter the order of navigation, or regenrated posts, its used for animating carousel for desktop
+                  console.log(homeState.viewed);//you can also use viewed array to keep track of user navigation sequence.
+
+          if((currentPostAt - 2) % 5 === 0 && homeState.previousPost>currentPostAt){
+            fillEmptyPosts(homeState, currentPostAt)
+            .then(() =>removeFarPosts(homeState, currentPostAt)) // clean up phase (empty for now)
+            .then(() => {
+              console.log("✅ Finished filling empty containers & removing far posts ");
+            })
+            .catch(err => {
+              console.warn(`⚠️ Skipped or aborted at post ${currentPostAt}:`, err);
+            });
+          }else if((currentPostAt - 3) % 5 === 0&& homeState.previousPost<currentPostAt) {
+          lazyLoadFuturePosts(homeState, currentPostAt)
+            .then(() => {if(currentPostAt>3)removeOldPosts(homeState, currentPostAt)}) // clean up phase (empty for now)
+            .then(() => {
+              console.log(`✅ Finished loading & cleanup for post ${currentPostAt}`);
+            })
+            .catch(err => {
+              console.warn(`⚠️ Skipped or aborted at post ${currentPostAt}:`, err);
+            });
+        }
+
+
+      }
+    });
+  }, {
+    root: homeState.wrapper,
+    threshold: 0.6
+  });
+
+}
+  
+function fillEmptyPosts(state, currentpostat) {
+  return new Promise((resolve, reject) => {
+    if (currentpostat <= 2) {
+      console.log("ℹ️ Skipping fill: currentpostat <= 2");
+      resolve();
+      return;
+    }
+    const from = currentpostat - 3;
+    const to = currentpostat - 7;
+
+    for (let i = from; i >= to && i >= 0; i--) {
+      if (state.currentPost > currentpostat) {
+        console.log("⛔ Aborted fill: user navigated away");
+        reject("User navigated away during fill");
+        return;
+      }
+
+      const container = state.wrapper.querySelector(`.main[data-index='${i}']`);
+      if (container && container.children.length === 0 && state.posts[i]) {
+        const post = state.posts[i];
+
+        const innerHTML = isMobile
+          ? `
+            <div class="post-card w-[80%] h-[70vh] flex flex-row justify-center items-center mx-auto my-auto">
+              <div class="image-side w-full bg-black relative h-full flex flex-col justify-center items-center">
+                <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75vh)] leading-[4vh] bg-green-200 h-[4vh]">By: ${post.Photographer_name}</a>
+                    ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4vh]">❗</button>`:""}
+                <div class="image-container max-md:h-[60vh] md:h-[63.5vh] absolute top-0 transition-all duration-700 ease-in-out border-2 border-white">
+                  <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
+                </div>
+                <div class="carousel-preview max-md:h-[10vh] h-[6.5vh] bg-green-200 absolute max-md:top-[60vh] md:top-[63.5vh] transition-all duration-700 ease-in-out w-full">
+                  <div class="just-a-wrapper h-full w-full px-2 py-[1vh] md:pb-0 flex flex-col">
+                    <p class="text-gray-700 max-md:line-clamp-2 md:line-clamp-1 overflow-hidden text-[clamp(.25rem,1rem,2.5vh)] leading-[2.5vh]">
+                      <span class="font-bold">At the Moment: </span><span>${post.At_the_moment}</span>
+                    </p>
+                    <a class="read-more-link text-blue-400 text-[clamp(.05rem,1rem,2.5vh)] h-[3vh]">Full info</a>
+                  </div>
+                </div>
+    ${
+    state !== yourState
+      ? `  <div class="social-icons hidden max-md:flex w-full absolute top-[100%] justify-evenly items-center h-[4vh]">
+        <a href="#" class="">I</a>
+        <a href="#" class="">F</a>
+        <a href="#" class="">W</a>
+          </div>`
+      : 
+      (() => {
+          switch (post.Rejected) {
+            case "false":
+              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-yellow-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+                      </div>`;
+            case "approved":
+              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-green-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+                      </div>`;
+            default:
+              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-red-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+                      </div>`;
+          }
+        })()
+  }
+              </div>
+            </div>`
+          : `
+            <div class="post-card w-[80%] h-[65vh] flex flex-row justify-center items-center mx-auto my-auto">
+              <div class="image-side w-[60%] bg-black relative h-full flex flex-col justify-center items-center">
+                <a href="#" class="PhotographerIdxl-placeholder block invisible h-[2.5vh]"></a>
+                <div class="image-container h-[60vh]">
+                  <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
+                </div>
+                ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5vh] text-[1.5vh] leading-[2.5vh]">By: ${post.Photographer_name}</a>
+              </div>
+              <div class="info-side w-[40%] flex flex-col bg-green-300 h-full">
+                <div class="info-carousel w-full h-[85%] relative overflow-hidden transition-all duration-700 ease-in-out">
+                  <div class="carousel-container w-full h-full flex transition-transform duration-500 ease-in-out">
+                    <div class="first-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+                      <div class="slide1-content min-h-[18vh] max-h-full">
+                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>At The Moment</span></div>
+                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.At_the_moment}</p>
+                      </div>
+                      <div class="flex-auto bg-black"></div>
+                    </div>
+                    <div class="second-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+                      <div class="slide2-content min-h-[18vh] max-h-full">
+                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Facts</span></div>
+                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Facts}</p>
+                      </div>
+                      <div class="flex-auto bg-black"></div>
+                    </div>
+                    <div class="third-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+                      <div class="slide3-content min-h-[18vh] max-h-full">
+                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Atrocities</span></div>
+                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Atrocities}</p>
+                      </div>
+                      <div class="flex-auto bg-black"></div>
+                    </div>
+                  </div>
+                  <button class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white rounded-full focus:outline-none">←</button>
+                  <button class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white rounded-full focus:outline-none">→</button>
+                </div>
+                <div class="button-section h-[15%] flex justify-center items-center">
+                  ${state===yourState?`<button class="report-icon text-red-600 border-2 border-red-500 px-3 h-1/2 w-1/3 text-center text-lg">Report</button>`
+                  :`<button class="donate-button border-2 border-green-500 px-3 h-1/2 w-1/3 text-center text-lg">Donate</button>`
+                }
+                </div>
+              </div>
+            </div>
+${state === yourState?
+(() => {
+          switch (post.Rejected) {
+            case "false":
+              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-yellow-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+                      </div>`;
+            case "approved":
+              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-green-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+                      </div>`;
+            default:
+              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-red-500 text-center">
+              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+                      </div>`;
+          }
+        })()
+  :""}            `;
+
+        container.innerHTML = innerHTML;
+        console.log(`🧩 Refilled content into post container ${i}`);
+      }
+    }
+
+    resolve();
+  });
+}
+function removeFarPosts(state, currentpostat) {
+  console.log(`🧹 removeFarPosts(): trying to remove posts from ${state.maxLoadedIndex} to ${currentpostat + 3}`);
+  
+  for (let i = state.maxLoadedIndex; i >= currentpostat + 3; i--) {
+    if (state.currentPost < currentpostat) {
+      console.warn(`⛔ Abort removal: user went back to post ${state.currentPost}`);
+      return;
+    }
+
+    const el = state.wrapper.querySelector(`.main[data-index='${i}']`);
+    if (el) {
+      el.remove();
+      console.log(`🗑️ Removed post container ${i}`);
+    } else {
+      console.log(`⚠️ Skipped: post container ${i} not found`);
+    }
+  }
+
+  // Update maxLoadedIndex
+  state.maxLoadedIndex = state.wrapper.children.length;
+  console.log(`🔄 maxLoadedIndex now updated to ${state.maxLoadedIndex}`);
+}
+
+
+function lazyLoadFuturePosts(state, currentpostat) {
+return new Promise((resolve, reject) => {
+  // if(previousPost<currentpostat){
+    fetchPosts(state, currentpostat + 2, currentpostat + 6, currentpostat, resolve, reject);
+  // }else{resolve()}
+});
+}
+function removeOldPosts(state, currentpostat) {
+let i = 0;
+const limit = currentpostat - 3;
+
+function runCleanupStep() {
+  if (currentpostat > state.currentPost) {
+    console.log("⛔ Aborted cleanup: user went back");
+    return;
+  }
+
+  if (i >= limit) {
+    console.log("✅ Finished cleanup.");
+    return;
+  }
+
+  clearPostChildren(state.wrapper, i);
+  console.log(`🧹 Cleanup: ${i}th post is removed from container`);
+  i++;
+
+  setTimeout(runCleanupStep, 1000);
+}
+
+runCleanupStep();
+}
+
+
+
+
+
+
+// 🔁 Begin the application logic
+startAppFlow();
+
+document.getElementById("next-post").addEventListener("click", () => {
+  if (activeState?.wrapper) {
+    activeState.wrapper.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  }
+});
+
+document.getElementById("prev-post").addEventListener("click", () => {
+  if (activeState?.wrapper) {
+    activeState.wrapper.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
+  }
+});
+
+
+
+
+//to use in console for testing post removal from container
+function clearPostChildren(wrapper,index) {
+  const el = wrapper.querySelector(`.main[data-index='${index}']`);
+  if (el) {
+    console.log(`🧼 Clearing children of post ${index}`);
+    el.innerHTML = "";
+    // clearedPosts.add(index);
+  } else {
+    console.warn(`⚠️ Post ${index} not found in DOM`);
+  }
+}
+
+let activeCarousel = null;
+
+// function initializeCarousel(postInView) {
+//   let currentSlide = 0;
+//   const slides = postInView.querySelectorAll(".carousel-slide");
+//   const totalSlides = slides.length;
+//   const carouselContainer = postInView.querySelector(".carousel-container");
+//   const prevBtn = postInView.querySelector(".prev-slide");
+//   const nextBtn = postInView.querySelector(".next-slide");
+
+//   activeCarousel = { currentSlide, slides, totalSlides, carouselContainer };
+
+//   function updateCarousel() {
+//     activeCarousel.carouselContainer.style.transform = `translateX(-${activeCarousel.currentSlide * 100}%)`;
+//     prevBtn.classList.toggle("bg-slate-400", activeCarousel.currentSlide > 0);
+//     prevBtn.classList.toggle("bg-slate-300", activeCarousel.currentSlide === 0);
+//     nextBtn.classList.toggle("bg-slate-400", activeCarousel.currentSlide < activeCarousel.totalSlides - 1);
+//     nextBtn.classList.toggle("bg-slate-300", activeCarousel.currentSlide === activeCarousel.totalSlides - 1);
+//   }
+
+//   prevBtn.addEventListener("click", () => {
+//     if (activeCarousel.currentSlide > 0) {
+//       activeCarousel.currentSlide--;
+//       updateCarousel();
+//     }
+//   });
+
+//   nextBtn.addEventListener("click", () => {
+//     if (activeCarousel.currentSlide < activeCarousel.totalSlides - 1) {
+//       activeCarousel.currentSlide++;
+//       updateCarousel();
+//     }
+//   });
+
+//   updateCarousel(); // Initialize the state
+// }
+
+function initializeCarousel(postInView) {
+  let currentSlide = 0;
+  const slides = postInView.querySelectorAll(".carousel-slide");
+  const totalSlides = slides.length;
+  const carouselContainer = postInView.querySelector(".carousel-container");
+
+  // Select and clone buttons to remove old listeners
+  const prevBtnOld = postInView.querySelector(".prev-slide");
+  const nextBtnOld = postInView.querySelector(".next-slide");
+
+  const prevBtn = prevBtnOld.cloneNode(true);
+  const nextBtn = nextBtnOld.cloneNode(true);
+
+  // Replace old buttons with clean clones
+  prevBtnOld.replaceWith(prevBtn);
+  nextBtnOld.replaceWith(nextBtn);
+
+  // Update activeCarousel global (used in keydown navigation)
+  activeCarousel = { currentSlide, slides, totalSlides, carouselContainer };
+
+  function updateCarousel() {
+    activeCarousel.carouselContainer.style.transform = `translateX(-${activeCarousel.currentSlide * 100}%)`;
+    prevBtn.classList.toggle("bg-slate-400", activeCarousel.currentSlide > 0);
+    prevBtn.classList.toggle("bg-slate-300", activeCarousel.currentSlide === 0);
+    nextBtn.classList.toggle("bg-slate-400", activeCarousel.currentSlide < activeCarousel.totalSlides - 1);
+    nextBtn.classList.toggle("bg-slate-300", activeCarousel.currentSlide === activeCarousel.totalSlides - 1);
+  }
+
+  // Fresh event listeners (no duplicate stacking now!)
+  prevBtn.addEventListener("click", () => {
+    if (activeCarousel.currentSlide > 0) {
+      activeCarousel.currentSlide--;
+      updateCarousel();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (activeCarousel.currentSlide < activeCarousel.totalSlides - 1) {
+      activeCarousel.currentSlide++;
+      updateCarousel();
+    }
+  });
+
+  updateCarousel(); // Init the state visually
+}
+
+
+// Single global listener outside of initializeCarousel:
+document.addEventListener("keydown", (e) => {
+  if (!activeCarousel || isMobile) return;
+  if (e.key === "ArrowLeft" && activeCarousel.currentSlide > 0) {
+    activeCarousel.currentSlide--;
+  } else if (e.key === "ArrowRight" && activeCarousel.currentSlide < activeCarousel.totalSlides - 1) {
+    activeCarousel.currentSlide++;
+  } else {
+    return;
+  }
+  activeCarousel.carouselContainer.style.transform = `translateX(-${activeCarousel.currentSlide * 100}%)`;
+});
+
+
+//after DOM loaded
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+    e.preventDefault();
+  }
+});
+
+  
+
+let activeReadMoreCleanup = null;
+let activeGoBackCleanup = null;
+
+
+function setupReadMoreListener(state, postEl, index) {
+  // Clean up previous listener if exists
+  if (activeReadMoreCleanup) {
+    activeReadMoreCleanup(); // remove old listener
+    activeReadMoreCleanup = null;
+  }
+  if (typeof index !== "number" || !state.posts[index]) {
+  console.warn("❌ Invalid post index or post data not found in posts", index);
+  return;
+}
+
+  const readMoreLink = postEl.querySelector(".read-more-link");
+  const imageContainer = postEl.querySelector(".image-container");
+  const carousel = postEl.querySelector(".carousel-preview");
+  const bottom = document.getElementById("bottom-7.5vh");
+  const previewContent = postEl.querySelector(".just-a-wrapper");
+
+  if (!readMoreLink || !imageContainer || !carousel || !previewContent) return;
+
+  const onClick = (e) => {
+    e.preventDefault();
+
+    state.wrapper.classList.toggle("!overflow-y-hidden");//to make the page non-scrollable while on full screen
+
+    imageContainer.classList.add(
+      "max-sm:top-[-17.5vh]", "max-md:top-[-22.5vh]",
+      "md:top-[-22vh]", "xl:top-[-24.5vh]","w-screen", "!h-[50vh]", "z-30", "bg-black"
+    );
+
+    carousel.classList.remove("max-sm:top-[60vh]", "md:top-[63.5vh]");
+    carousel.classList.add(
+      "max-sm:top-[32.5vh]", "sm:top-[27.5vh]", "md:top-[28vh]","xl:top-[25.5vh]", "w-screen",
+      "!h-[42.5vh]", "z-30"
+    );
+
+    previewContent.classList.add("hidden");
+
+    const fullCarouselHtml = `<div class="info-carousel w-full h-full relative overflow-hidden transition-all duration-700 ease-in-out">
+                  <div class="carousel-container w-full h-full flex transition-transform duration-500 ease-in-out">
+                    <div class="first-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+                      <div class="slide1-content min-h-[18vh] max-h-full">
+                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>At The Moment</span></div>
+                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${state.posts[index].At_the_moment}</p>
+                      </div>
+                      <div class="flex-auto bg-black"></div>
+                    </div>
+                    <div class="second-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+                      <div class="slide2-content min-h-[18vh] max-h-full">
+                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Facts</span></div>
+                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${state.posts[index].Facts}</p>
+                      </div>
+                      <div class="flex-auto bg-black"></div>
+                    </div>
+                    <div class="third-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+                      <div class="slide3-content min-h-[18vh] max-h-full">
+                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Atrocities</span></div>
+                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${state.posts[index].Atrocities}</p>
+                      </div>
+                      <div class="flex-auto bg-black"></div>
+                    </div>
+                  </div>
+                  <button class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white rounded-full focus:outline-none">←</button>
+                  <button class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white rounded-full focus:outline-none">→</button>
+                </div>`;
+    
+    // `<div id="info-carousel" class="w-full h-full relative overflow-hidden transition-all duration-700 ease-in-out opacity-0">
+    //                 <div id="carousel-container" class="w-full h-full flex transition-transform duration-500 ease-in-out ">
+    //                   <div id="first-slide" class="carousel-slide min-w-full max-h-full px-6 flex flex-col bg-green-300">
+    //                     <div id="slide1-content" class="min-h-[18vh] max-h-full"> <!--min-h-[18vh]-> 3.5*3+7.5 to leave space for 3 lines and heading at least-->
+    //                       <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Slide 1 Title</span></div>
+    //                       <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amdolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, </p>
+    //                     </div>
+    //                     <div class="flex-auto bg-black"></div> 
+    //                   </div>
+                
+    //                   <div id="second-slide" class="carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+    //                     <div id="slide2-content" class="min-h-[18vh] max-h-full"> 
+    //                       <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Slide 2 Title</span></div>
+    //                       <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem ipsum dolor </p>
+    //                     </div>
+    //                     <div class="flex-auto bg-black"></div> 
+    //                   </div>
+                
+    //                   <div id="third-slide" class="carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
+    //                     <div id="slide3-content" class="min-h-[18vh] max-h-full">
+    //                       <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Slide 3 Title</span></div>
+    //                       <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem Lorem ipsum dolor sit sit amet,Loremamet,Lorem Lorem ipsum dolor sit sit amet,Loremamet,Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem </p>
+    //                     </div>
+    //                     <div class="flex-auto bg-black"></div> 
+    //                   </div>
+    //               </div>
+    //               <button id="prev-slide" class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white  rounded-full focus:outline-none">←</button>
+    //               <button id="next-slide" class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white  rounded-full focus:outline-none">→</button>
+    //             </div>`;
+
+                const full_carousel_wrapper = document.createElement("div");
+      full_carousel_wrapper.innerHTML = fullCarouselHtml.trim();
+
+      const fullCarouselEl = full_carousel_wrapper.firstChild; // ✅ store firstChild before appending
+      carousel.appendChild(fullCarouselEl);
+
+      requestAnimationFrame(() => {
+        fullCarouselEl.classList.replace("opacity-0", "opacity-100"); // ✅ now this won’t be null
+        setTimeout(() => {
+    initializeCarousel(fullCarouselEl); // ✅ wait, so DOM can fully render it
+  }, 100);
+      });
+      
+
+    // Show bottom bar
+    bottom.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      bottom.classList.replace("opacity-0", "opacity-100");
+    });
+
+
+
+setTimeout(() => {
+  const goBackBtn = document.getElementById("go-back");
+  if (goBackBtn) {
+    if (activeGoBackCleanup) {
+  activeGoBackCleanup();
+  activeGoBackCleanup = null;
+}
+    // ✅ Define handler first
+    const goBackHandler = () => {
+      // Revert image container classes
+      imageContainer.classList.remove(
+        "xl:w-full", "max-sm:top-[-17.5vh]", "max-md:top-[-22.5vh]",
+        "md:top-[-22vh]", "xl:top-[-24.5vh]", "w-screen", "!h-[50vh]", "bg-black"
+      );
+
+      setTimeout(() => imageContainer.classList.remove("z-30"),700);//removed it later to lay over the header while animating back
+      
+
+      // Revert carousel preview
+      carousel.classList.add("max-sm:top-[60vh]", "md:top-[63.5vh]");
+      carousel.classList.remove(
+        "max-sm:top-[32.5vh]", "sm:top-[27.5vh]", "md:top-[28vh]",
+        "xl:top-[25.5vh]", "w-screen", "!h-[42.5vh]", "z-30"
+      );
+
+      previewContent.classList.remove("hidden");
+
+      const infoCarousel = postEl.querySelector(".info-carousel");
+      if (infoCarousel) infoCarousel.remove();
+
+      bottom.classList.replace("opacity-100", "opacity-0");
+      setTimeout(() => bottom.classList.add("hidden"), 700);
+
+      state.wrapper.classList.toggle("!overflow-y-hidden");//to make the page scrollable again after exiting full screen
+
+
+      // 🧼 Clean up the event listener
+      goBackBtn.removeEventListener("click", goBackHandler);
+      activeGoBackCleanup = null;
+    };
+
+    // 🧠 Clean up previous listener if exists
+    if (activeGoBackCleanup) {
+      activeGoBackCleanup();
+      activeGoBackCleanup = null;
+    }
+
+    // ✅ Attach and store cleanup
+    goBackBtn.addEventListener("click", goBackHandler);
+    activeGoBackCleanup = () => {
+      goBackBtn.removeEventListener("click", goBackHandler);
+    };
+  }
+}, 1000);
+
+
+  };
+
+  readMoreLink.addEventListener("click", onClick);
+
+  // Set up cleanup to remove this listener later
+  activeReadMoreCleanup = () => {
+    readMoreLink.removeEventListener("click", onClick);
+    activeReadMoreCleanup = null;
+  };
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const navItems = ["home", "upload", "favorites", "yours"];
+  let homeScrollTop = 0;
+
+  function showSection(sectionId) {
+    const sections = ["home", "upload", "favorites", "yours"];
+    const footer = document.querySelector("footer");
+    const internalNav = document.getElementById("internal-nav");
+    // const homeState.wrapper = document.getElementById("wrapper");
+
+    // Save scrollTop if leaving home
+    if (
+      document.getElementById("home") &&
+      !document.getElementById("home").classList.contains("hidden") &&
+      sectionId !== "home"
+    ) {
+      homeScrollTop = homeState.wrapper.scrollTop;
+    }
+
+    // Fade out current section
+    const currentSection = document.querySelector("#home:not(.hidden), #upload:not(.hidden), #favorites:not(.hidden), #yours:not(.hidden)");
+    if (currentSection) {
+      currentSection.classList.add("opacity-0", "transition-opacity", "duration-500");
+      setTimeout(() => {
+        currentSection.classList.add("hidden");
+        currentSection.classList.remove("opacity-0", "transition-opacity", "duration-500");
+      }, 500);
+    }
+
+    // Fade in selected section after hiding others
+    const target = document.getElementById(sectionId);
+    if (target) {
+      setTimeout(() => {
+        target.classList.remove("hidden");
+        target.classList.add("opacity-0", "transition-opacity", "duration-500");
+        requestAnimationFrame(() => {
+          target.classList.remove("opacity-0");
+
+          if (sectionId === "yours") {
+        startYoursSection(); // your async function — no need to await here
+      }else if (sectionId === "favorites") {
+        startFavoritesSection(); // ✅ fire it off
+      }
+
+        });
+      }, 500);
+    }
+
+    if (sectionId === "home") activeState = homeState;
+    else if (sectionId === "favorites") activeState = favoriteState;
+    else if (sectionId === "yours") activeState = yourState;
+    else activeState = null;
+
+    // Restore scrollTop if returning to home
+    if (sectionId === "home" && homeState.wrapper) {
+      setTimeout(() => {
+        homeState.wrapper.scrollTop = homeScrollTop;
+      }, 0);
+    }
+
+    // Show/hide internal-nav and visually hide footer (not .hidden)
+    const shouldShowNav = sectionId !== "upload";
+    const shouldShowFooter = sectionId !== "upload";
+
+    if (internalNav) internalNav.classList.toggle("hidden", !shouldShowNav);
+    if (footer) footer.classList.toggle("invisible", !shouldShowFooter);
+    const filtersBtn = document.getElementById("filter-trigger");
+    filtersBtn.classList.toggle("hidden", sectionId !== "home");
+    const favoriteBtn = document.getElementById("favorite-button");
+    favoriteBtn.classList.toggle("hidden", sectionId !== "home" && sectionId !== "favorites");
+    const yoursHeading = document.getElementById("yours-heading");
+    yoursHeading.classList.toggle("hidden", sectionId !== "yours");
+    const favoritesHeading = document.getElementById("favorites-heading");
+    favoritesHeading.classList.toggle("hidden", sectionId !== "favorites");
+    const footerSocialIcons = document.getElementById("footer-social-icons");
+    footerSocialIcons.classList.toggle("hidden", sectionId === "yours"|| sectionId !== "favorites" && sectionId !== "home");
+  }
+
+  function attachNavListeners() {
+    const allLinks = document.querySelectorAll("header nav a");
+
+    allLinks.forEach(link => {
+      const label = link.textContent.trim().toLowerCase();
+
+      if (navItems.includes(label)) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          showSection(label);
+
+          // Hide mobile menu if open
+          const mobileMenu = document.getElementById("mobile-menu");
+          const overlay = document.getElementById("overlay");
+          if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+            if (overlay) overlay.classList.replace("z-20", "z-[-1]");
+          }
+        });
+      }
+    });
+  }
+
+  attachNavListeners();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const filterBox = document.getElementById("filters-box");
+  const filterTrigger = document.getElementById("filter-trigger");
+  const filterClass = document.getElementById("filter-classification");
+  const filterSub = document.getElementById("filter-sub");
+  const filterRarity = document.getElementById("filter-rarity");
+  const applyBtn = document.getElementById("apply-filter");
+  const resetBtn = document.getElementById("reset-filter");
+
+  // Show the filter box when filter button is clicked
+  filterTrigger.addEventListener("click", (e) => {
+    e.preventDefault();
+    filterBox.classList.remove("hidden");
+  });
+
+  // Populate sub-classification based on classification selection
+  filterClass.addEventListener("change", function () {
+    const type = this.value;
+    filterSub.innerHTML = `<option value="_">-- Any Subtype --</option>`;
+    if (type === "flora") {
+      filterSub.innerHTML += `
+        <option value="water based">Water Based</option>
+        <option value="land based">Land Based</option>`;
+    } else if (type === "fauna") {
+      filterSub.innerHTML += `
+        <option value="land dwellers">Land Dwellers</option>
+        <option value="amphibious">Amphibious</option>
+        <option value="aquatic">Aquatic</option>`;
+    }
+  });
+
+  // Apply Filter
+  applyBtn.addEventListener("click", () => {
+    const type = filterClass.value || "_";
+    const subtype = filterSub.value || "_";
+    const rarity = filterRarity.value || "_";
+
+    const filterStr = `${type}-${subtype}-${rarity}`;
+    console.log("🔍 Filtering by:", filterStr);
+
+    filterBox.classList.add("hidden");
+    startAppFlow(filterStr);
+  });
+
+  // Reset Filter
+  resetBtn.addEventListener("click", () => {
+    filterClass.value = "_";
+    filterSub.innerHTML = `<option value="_">-- Any Subtype --</option>`;
+    filterRarity.value = "_";
+    filterBox.classList.add("hidden");
+    startAppFlow(); // Load all posts
+  });
+});
+
+//Yours logic starts here!
+async function startYoursSection() {
+  // Disconnect previous observer if any
+  if (yourState.postObserver) {
+    yourState.postObserver.disconnect();
+    yourState.postObserver = null;
+  }
+
+  if (yourState.wrapper) {
+    yourState.wrapper.innerHTML = ""; // Reset DOM
+    yourState.wrapper.scrollTop = 0;  // Scroll to top
+  }
+
+  // Fetch fresh data
+  const name = localStorage.getItem("photographer-name");
+  if (!name) {
+
+    yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3vh)]">
+      <p class="mb-4 font-semibold text-red-500">No user name found in this Browser-Account/Browser/Device</p>
+      <p class="mb-6">Have you uploaded to Green Frames before?</p>
+      <div class="flex gap-4">
+        <button id="yesBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Yes</button>
+        <button id="noBtn" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">No</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("noBtn").onclick = () => {
+    document.getElementById("usernamePrompt").innerHTML = `
+      <p class="text-green-700 font-medium">Please go to the <span>Uploads</span> section, post your first image, and return here to check its status.</p>
+    `;
+  };
+
+  document.getElementById("yesBtn").onclick = () => {
+    document.getElementById("usernamePrompt").innerHTML = `
+      <p class="mb-4">Please enter the name that was given to you after your first upload: (the user names are case-sensitive)</p>
+      <input id="usernameInput" type="text" placeholder="Your username" class="border px-3 py-2 rounded w-[80%] max-w-sm mb-4" />
+      <button id="submitUsername" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
+    `;
+
+    document.getElementById("submitUsername").onclick = () => {
+      const enteredName = document.getElementById("usernameInput").value.trim();
+      if (!enteredName || enteredName.length < 6) {
+        alert("Please enter a valid name.");
+        return;
+      }
+      localStorage.setItem("photographer-name", enteredName);
+      document.getElementById("photographer-name").value = enteredName;
+
+      startYoursSection(); // Reload your posts
+    };
+  };
+
+
+
+  return;
+
+
+  }else{
+    document.getElementById("yours-heading").innerHTML = `${name} <a id="change-user">=></a>`;
+    document.getElementById("change-user").onclick = () => {
+      yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3vh)]">
+      <p class="mb-4 font-semibold text-red-500">Are you sure you want to change the user?</p>
+      <div class="flex gap-4">
+        <button id="yesBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Yes</button>
+        <button id="noBtn" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">No</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("noBtn").onclick = () => {
+    startYoursSection();
+  };
+  document.getElementById("yesBtn").onclick = () => {
+    document.getElementById("usernamePrompt").innerHTML = `
+      <p class="mb-4">Please enter the name that was given to you after your first upload: (the user names are case-sensitive)</p>
+      <input id="usernameInput" type="text" placeholder="Your username" class="border px-3 py-2 rounded w-[80%] max-w-sm mb-4" />
+      <button id="submitUsername" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
+    `;
+
+    document.getElementById("submitUsername").onclick = () => {
+      const enteredName = document.getElementById("usernameInput").value.trim();
+      if (!enteredName || enteredName.length < 6) {
+        alert("Please enter a valid name.");
+        return;
+      }
+      document.getElementById("photographer-name").value = enteredName;
+      localStorage.setItem("photographer-name", enteredName);
+      startYoursSection(); // Reload your posts
+    };
+  };
+    };
+  
+  }
+
+  yourState.posts = await yourPostsOnly(name);
+  if (yourState.posts.length === 0) {
+    yourState.wrapper.innerHTML = "<p class='text-center p-4'>Coudn't find any posts in your name!<br><br>If you just uploaded your first post,<br>Please wait atleast a minute and come back to check progress<br><br><br> If you are trying to see your existing posts in this Browser-Account/Browser/Device,<br>you must have typed your username wrong!<br>you can change the user name by clicking the edit icon next to the current name</p>";
+    return;
+  }else{
+    console.log(yourState.posts)
+  }
+
+  observeYoursPosts();
+  fetchPosts(yourState, 0, 4); 
+}
+
+async function yourPostsOnly(name) {
+
+  const cloudName = "dumtyosqg";
+  const url = `https://res.cloudinary.com/${cloudName}/image/list/gallery.json`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch posts");
+
+    const data = await res.json();
+    const resources = data.resources || [];
+
+    const all = resources
+      .filter(asset => asset.context?.custom?.Photographer_name === name)
+      .map(asset => {
+        const ctx = asset.context.custom;
+        return {
+          assetId: asset.asset_id,
+          publicId: asset.public_id,
+          createdAt: asset.created_at,
+          Photographer_name: ctx.Photographer_name,
+          Social: ctx.Social,
+          At_the_moment: ctx.At_the_moment,
+          Facts: ctx.Facts,
+          Atrocities: ctx.Atrocities,
+          Classification: ctx.Classification,
+          Rejected: ctx.Rejected // <-- no transformation
+        };
+      });
+
+    return all;
+  } catch (err) {
+    console.error("❌ Error fetching 'Yours' posts:", err);
+    return [];
+  }
+}
+
+function observeYoursPosts() {
+
+  yourState.postObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const currentPostAt = parseInt(entry.target.getAttribute("data-index"));
+      if (currentPostAt !== yourState.currentPost) {
+        console.log(`👀 Viewing Post: ${currentPostAt}`);
+        yourState.previousPost= yourState.currentPost;
+        yourState.currentPost = currentPostAt;
+      }
+              if (!isMobile) {
+                initializeCarousel(entry.target);
+                console.log("inside if block");
+              }else{
+                setupReadMoreListener(yourState, entry.target,currentPostAt); 
+              }
+        reportThisImage(yourState, entry.target, currentPostAt);
+        if((currentPostAt - 2) % 5 === 0 && yourState.previousPost>currentPostAt){
+          fillEmptyPosts(yourState, currentPostAt)
+          .then(() =>removeFarPosts(yourState, currentPostAt)) // clean up phase (empty for now)
+          .then(() => {
+            console.log("✅ Finished filling empty containers & removing far posts ");
+          })
+          .catch(err => {
+            console.warn(`⚠️ Skipped or aborted at post ${currentPostAt}:`, err);
+          });
+        }else if((currentPostAt - 3) % 5 === 0&& yourState.previousPost<currentPostAt) {
+        lazyLoadFuturePosts(yourState, currentPostAt)
+          .then(() => {if(currentPostAt>3)removeOldPosts(yourState, currentPostAt)}) // clean up phase (empty for now)
+          .then(() => {
+            console.log(`✅ Finished loading & cleanup for post ${currentPostAt}`);
+          })
+          .catch(err => {
+            console.warn(`⚠️ Skipped or aborted at post ${currentPostAt}:`, err);
+          });
+      }
+
+
+    }
+  });
+}, {
+  root: yourState.wrapper,
+  threshold: 0.6
+});
+
+}
+
+let activeReportCleanup = null;
+
+function reportThisImage(state, postEl, index) {
+  console.log("🔔 reportThisImage() called for index", index);
+
+  if (activeReportCleanup) {
+    activeReportCleanup(); // remove previous listener
+    activeReportCleanup = null;
+  }
+
+  const reportIcon = postEl.querySelector(".report-icon");
+
+  if (!reportIcon || typeof index !== "number" || !state.posts[index]) {
+    console.warn("❌ Report icon or post data not found", postEl, index);
+    return;
+  }
+
+  const onClick = () => {
+    const post = state.posts[index];
+    const subject = encodeURIComponent("I do not remember posting this image");
+    const body = encodeURIComponent(`Hi,\n\nI would like to report an issue with the image below:\n\nPublic ID: ${post.publicId}\nPhotographer: ${post.Photographer_name}\nClassification: ${post.Classification}\n\nThanks.`);
+    const mailto = `mailto:greenframes.report@example.com?subject=${subject}&body=${body}`;
+    window.open(mailto, "_blank");
+  };
+
+  reportIcon.addEventListener("click", onClick);
+
+  // Store cleanup
+  activeReportCleanup = () => {
+    reportIcon.removeEventListener("click", onClick);
+    activeReportCleanup = null;
+  };
+}
+
+
+
+function getFavorites() {
+  try {
+    const stored = JSON.parse(localStorage.getItem("favoritePosts"));
+    return Array.isArray(stored) ? stored : [];
+  } catch {
+    return [];
+  }
+}
+
+function setFavorites(favs) {
+  localStorage.setItem("favoritePosts", JSON.stringify(favs));
+}
+
+if (!localStorage.getItem("favoritePosts")) {
+  setFavorites([]); // initializes if not present
+}
+
+function updateFavoriteButton(assetId) {
+  const favButton = document.getElementById("favorite-button");
+  if (!favButton || !assetId) return;
+
+  const favorites = getFavorites();
+  favButton.textContent = favorites.includes(assetId) ? "★" : "☆";
+}
+
+document.getElementById("favorite-button").addEventListener("click", () => {
+  const currentPost = activeState.posts[activeState.currentPost];
+  if (!currentPost) return;
+
+  const assetId = currentPost.assetId;
+  let favorites = getFavorites();
+
+  if (favorites.includes(assetId)) {
+    favorites = favorites.filter(id => id !== assetId);
+  } else {
+    favorites.push(assetId);
+  }
+
+  setFavorites(favorites);
+  updateFavoriteButton(assetId);
+});
+
+async function startFavoritesSection() {
+  const favorites = getFavorites(); // already implemented
+  if (fullposts.length === 0) {
+  await fetchGalleryPosts();
+}
+
+const fullMap = new Map(fullposts.map(p => [p.assetId, p]));
+favoriteState.posts = favorites
+  .slice()                     // cloning to avoid mutating original
+  .reverse()                   // reverse order
+  .map(id => fullMap.get(id)) // get full post object for each assetId
+  .filter(Boolean);           // remove any undefined/null values
+  
+  favoriteState.wrapper.innerHTML = "";
+  favoriteState.wrapper.scrollTop = 0;
+  favoriteState.currentPost = 0;
+  favoriteState.previousPost = -1;
+  favoriteState.maxLoadedIndex = -1;
+
+  if (favoriteState.posts.length === 0) {
+    favoriteState.wrapper.innerHTML = `<p class="text-center pt-[50vh]">You haven't added any favorites yet. Tap the ☆ icon on a post to favorite it!</p>`;
+    return;
+  }
+
+  observeFavoritesPosts();
+  fetchPosts(favoriteState, 0, 4);
+}
+
+function observeFavoritesPosts() {
+  favoriteState.postObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const currentPostAt = parseInt(entry.target.getAttribute("data-index"));
+        if (currentPostAt !== favoriteState.currentPost) {
+          favoriteState.previousPost = favoriteState.currentPost;
+          favoriteState.currentPost = currentPostAt;
+        }
+
+        if (!isMobile) {
+          initializeCarousel(entry.target);
+        } else {
+          setupReadMoreListener(favoriteState, entry.target, currentPostAt);
+        }
+
+        updateFavoriteButton(favoriteState.posts[currentPostAt]?.assetId);
+
+        if ((currentPostAt - 2) % 5 === 0 && favoriteState.previousPost > currentPostAt) {
+          fillEmptyPosts(favoriteState, currentPostAt)
+            .then(() => removeFarPosts(favoriteState, currentPostAt));
+        } else if ((currentPostAt - 3) % 5 === 0 && favoriteState.previousPost < currentPostAt) {
+          lazyLoadFuturePosts(favoriteState, currentPostAt)
+            .then(() => {
+              if (currentPostAt > 3) removeOldPosts(favoriteState, currentPostAt);
+            });
+        }
+      }
+    });
+  }, {
+    root: favoriteState.wrapper,
+    threshold: 0.6
+  });
+}
+
+
+</script>
+
+</html>
