@@ -846,7 +846,7 @@ function fillEmptyPosts(state, currentpostat) {
               <div class="image-side w-full bg-black relative h-full flex flex-col justify-center items-center">
                 <a ${post.Social?`href=${post.Social} target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
                     ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4dvh]">❗</button>`:""}
-                <div class="image-container max-md:h-[60dvh] md:h-[63.5dvh] absolute top-0 transition-all duration-700 ease-in-out border-2 border-white">
+                <div class="image-container max-md:h-[60dvh] md:h-[63.5dvh] absolute top-0 transition-all duration-700 ease-in-out border-2 border-white w-full">
                   <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
                 </div>
                 <div class="carousel-preview max-md:h-[10dvh] h-[6.5dvh] bg-green-200 absolute max-md:top-[60dvh] md:top-[63.5dvh] transition-all duration-700 ease-in-out w-full">
