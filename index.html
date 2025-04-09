@@ -6,16 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link href="/GreenFramesTemp/dist/output.css" rel="stylesheet" type="text/css">
+    <link href="../dist/output.css" rel="stylesheet">
 </head>
-<body class="h-screen w-full min-w-[350px] min-h-[350px] bg-red-300">
+<body class="h-[100dvh] w-full min-w-[350px] min-h-[350px] bg-red-300">
   <!-- fixed the min h and w based on window resizing and content fit -->
-    <header class="w-full fixed top-0 bg-green-200 h-[10vh] xl:h-[15vh] z-30">
+    <header class="w-full fixed top-0 bg-green-200 h-[10dvh] xl:h-[15dvh] z-30">
       <!-- in the above header i had to put z-20 for the mobile-menu to overlay on the rest of the body to be visible -->
         <div class="flex w-full md:w-[90%] h-full mx-auto">
             <div class="flex w-2/3 md:w-1/2 justify-left sm:justify-left ml-4 md:ml-0 items-center">
-                <img src="/GreenFramesTemp/Unknown.jpeg" alt="logo" class="h-1/2">
-                <h1 class="font-bold text-gray-800 text-[clamp(0.5rem,1.5rem,10vh)] md:text-3xl lg:text-4xl leading-none">Green Frames</h1> <!--added leading-none to make the text fit inside header for devices as small as apple watch se 40 mm -->
+                <img src="assets/Unknown.jpeg" alt="logo" class="h-1/2">
+                <h1 class="font-bold text-gray-800 text-[clamp(0.5rem,1.5rem,10dvh)] md:text-3xl lg:text-4xl leading-none">Green Frames</h1> <!--added leading-none to make the text fit inside header for devices as small as apple watch se 40 mm -->
             </div>
             <!-- nav bar for large screens -->
             <nav class="hidden md:flex flex-row w-1/2 h-1/2 mx-auto justify-around items-end my-auto">
@@ -27,10 +27,10 @@
             <div class="md:hidden relative my-auto flex w-1/3 justify-end h-1/2">
               <!-- the below <p> makes the button unclickable between to complete the animations -->
             <p id="overlay" class="md:hidden block absolute top-0 left-auto mr-4 w-12 h-full z-[-1]"></p>
-            <button id="menu-toggle" class="md:hidden my-auto mr-4 h-full w-12 text-[clamp(0.25rem,1rem,5vh)] leading-[5vh]">|||</button> <!--text-[clamp(0.25rem,1rem,5vh)] leading-[5vh] set these temporarily to make the text inside responsive to vertical resizing, don't need this if not using text-->
+            <button id="menu-toggle" class="md:hidden my-auto mr-4 h-full w-12 text-[clamp(0.25rem,1rem,5dvh)] leading-[5dvh]">|||</button> <!--text-[clamp(0.25rem,1rem,5dvh)] leading-[5dvh] set these temporarily to make the text inside responsive to vertical resizing, don't need this if not using text-->
           </div>
               <!-- nav bar for smaller screens -->
-              <nav id="mobile-menu" class="hidden flex flex-col absolute top-[10vh] right-0 bg-green-200 p-4 w-48 shadow-lg overflow-hidden">
+              <nav id="mobile-menu" class="hidden flex flex-col absolute top-[10dvh] right-0 bg-green-200 p-4 w-48 shadow-lg overflow-hidden">
               <!--elements to make the bricks broken-fall effect -->
               <a href="#" class="menu-item block px-4 py-2 bg-green-700 opacity-0 transform translate-x-full transition-all duration-300">Home</a>
                 <a href="#" class="menu-item block px-4 py-2 bg-green-700 opacity-0 transform translate-x-full transition-all duration-500">Upload</a>
@@ -116,20 +116,23 @@
         </div>
     </header>
 
-    <nav id="internal-nav" class="w-[90%] max-sm:w-full flex flex-row fixed max-sm:bottom-0 sm:top-[10vh] xl:top-[15vh] h-[5vh] max-sm:mx-0 items-center mx-[5%] z-20">
-      <!-- had to mention "max-sm:flex max-sm:items-center max-sm:justify-center" to make the items centered vertically in 100% cases  -->
-        <a href="#" id="filter-trigger" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)]">Filters</a>
-        <a href="#" id="yours-heading" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-auto max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)] hidden">Your Posts</a>
-        <a href="#" id="favorites-heading" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)] hidden">Favorities</a>
-        <a href="#" id="favorite-button" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5vh)]">☆</a>
+    <nav id="internal-nav"
+    class="w-[90%] max-sm:w-full flex fixed items-center z-20
+           h-[5dvh] max-sm:bottom-0 max-sm:mx-0 mx-[5%]
+           sm:top-[10dvh] xl:top-[15dvh]">
+     <!-- had to mention "max-sm:flex max-sm:items-center max-sm:justify-center" to make the items centered vertically in 100% cases  -->
+        <a href="#" id="filter-trigger" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5dvh)]">Filters</a>
+        <a href="#" id="yours-heading" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-auto max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5dvh)] hidden">Your Posts</a>
+        <a href="#" id="favorites-heading" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5dvh)] hidden">Favorities</a>
+        <a href="#" id="favorite-button" class="hover:text-gray-400 sm:h-3/4 max-sm:h-full flex items-center justify-center w-28 max-sm:flex-1 text-center bg-green-50 box-border border-2 border-green-200 text-[clamp(.5rem,1rem,5dvh)]">☆</a>
 
     </nav>
-<div id="home" class="w-full h-screen">
-  <div id="wrapper" class="h-screen w-full  snap-y snap-mandatory overflow-y-scroll">  
+<div id="home" class="w-full h-[100dvh]">
+  <div id="wrapper" class="h-[100dvh] w-full  snap-y snap-mandatory overflow-y-scroll">  
     
   </div>
 </div>    
-<div id="upload" class="hidden h-screen w-full overflow-y-scroll pt-[10vh] xl:pt-[15vh]">
+<div id="upload" class="hidden h-[100dvh] w-full overflow-y-scroll pt-[10dvh] xl:pt-[15dvh]">
   <div class="flex flex-col items-center justify-start px-4" id="upload-container">
     <form id="upload-form" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md space-y-2">
       <h2 class="text-xl font-bold text-center">🌿 Upload to Green Frames</h2>
@@ -324,15 +327,15 @@ console.log("Atrocities Length:", atrocities.length);
 
   </script>
 </div>
-<div id="favorites" class="hidden h-screen w-full">
-  <div id="favoritesWrapper" class="h-screen w-full  snap-y snap-mandatory overflow-y-scroll"></div>
+<div id="favorites" class="hidden h-[100dvh] w-full">
+  <div id="favoritesWrapper" class="h-[100dvh] w-full  snap-y snap-mandatory overflow-y-scroll"></div>
 </div>
-<div id="yours" class="hidden h-screen w-full">
-  <div id="yoursWrapper" class="h-screen w-full  snap-y snap-mandatory overflow-y-scroll"></div>
+<div id="yours" class="hidden h-[100dvh] w-full">
+  <div id="yoursWrapper" class="h-[100dvh] w-full  snap-y snap-mandatory overflow-y-scroll"></div>
 </div>
   
   <!-- Filter Box (place at bottom of body) -->
-<div id="filters-box" class="hidden fixed top-[15vh] left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-lg z-50 p-4 w-[90%] max-w-md space-y-4">
+<div id="filters-box" class="hidden fixed top-[15dvh] left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-lg z-50 p-4 w-[90%] max-w-md space-y-4">
   <h2 class="text-xl font-bold text-center">🔍 Filter Posts</h2>
 
   <select id="filter-classification">
@@ -359,18 +362,18 @@ console.log("Atrocities Length:", atrocities.length);
   </div>
 </div>
 
-<div id="bottom-7.5vh" class="hidden fixed bottom-0 left-0 z-30 h-[7.5vh] flex w-full justify-around items-center bg-slate-500 transition-all duration-1000 ease-in-out  opacity-0"><!--xl:bottom-[15vh] xl:w-[32vw] xl:left-[58%] for ipad screen rotation scenario, after completing the layout for desktop carousel decide on this! can make the element xl:absolute but add 100vh from bottom to accomodate for the prepared for next post scenario-->
+<div id="bottom-7.5dvh" class="hidden fixed bottom-0 left-0 z-30 h-[7.5dvh] flex w-full justify-around items-center bg-slate-500 transition-all duration-1000 ease-in-out  opacity-0"><!--xl:bottom-[15dvh] xl:w-[32vw] xl:left-[58%] for ipad screen rotation scenario, after completing the layout for desktop carousel decide on this! can make the element xl:absolute but add 100dvh from bottom to accomodate for the prepared for next post scenario-->
   <button id="go-back" class="border-2 border-white">Go Back</button>
   <button id="" class="border-2 border-white w-1/2">Donate</button>
 </div>
 
 
 
-    <footer class="hidden md:flex fixed w-full bottom-0 bg-green-200 h-[5vh] z-30">
+    <footer class="hidden md:flex fixed w-full bottom-0 bg-green-200 h-[5dvh] z-30">
         <div class="w-[90%] h-full mx-auto flex">
         <div class="flex h-full justify-center items-center flex-1">
-          <a id="prev-post" href="#" class="m-4 text-[clamp(.5rem,1rem,5vh)]">prev ^</a>
-          <a id="next-post" href="#" class="m-4 text-[clamp(.5rem,1rem,5vh)]">next v</a>
+          <a id="prev-post" href="#" class="m-4 text-[clamp(.5rem,1rem,5dvh)]">prev ^</a>
+          <a id="next-post" href="#" class="m-4 text-[clamp(.5rem,1rem,5dvh)]">next v</a>
         </div>
         <div id="footer-social-icons" class="w-1/2 flex h-full justify-center items-center">
             <a href="#" class="m-4">I</a>
@@ -379,7 +382,7 @@ console.log("Atrocities Length:", atrocities.length);
         </div>
         </div>
     </footer>
-<div id="tailwind-safelist-dummy" class="hidden snap-start -translate-x-full translate-x-0 z-[-1] z-10 z-20 !overflow-y-hidden relative bottom-[5vh]"></div>
+<div id="tailwind-safelist-dummy" class="hidden snap-start -translate-x-full translate-x-0 z-[-1] z-10 z-20 !overflow-y-hidden relative bottom-[5dvh]"></div>
 
 <!-- Tailwind Safelist Dummy -->
 <div class="hidden
@@ -388,17 +391,17 @@ console.log("Atrocities Length:", atrocities.length);
   relative absolute fixed
   z-[-1] z-0 z-10 z-20 z-30
   w-full w-screen w-1/2 w-1/3 w-1/6 w-[80%] w-[90%] w-[60%] w-[40%] max-w-md max-sm:w-full
-  h-full h-screen h-[3vh] h-[4vh] h-[5vh] h-[6.5vh] h-[7.5vh] h-[10vh] h-[15vh] h-[18vh] h-[35vh] h-[50vh] h-[60vh] h-[63.5vh] h-[65vh] h-[70vh] h-[85%]
-  max-sm:top-[32.5vh] max-sm:top-[60vh] sm:top-[27.5vh] md:top-[28vh] md:top-[63.5vh] xl:top-[25.5vh] xl:top-[15vh]
-  top-0 top-[2.5vh] top-[10vh] top-[15vh] top-[100%] bottom-0 bottom-[5vh]
-  max-sm:h-full max-md:h-[60vh] md:h-[63.5vh] xl:h-[19vh]
-  max-sm:top-[-17.5vh] max-md:top-[-22.5vh] md:top-[-22vh] xl:top-[-24.5vh]
-  top-[32.5vh] top-[60vh]
+  h-full h-[100dvh] h-[3dvh] h-[4dvh] h-[5dvh] h-[6.5dvh] h-[7.5dvh] h-[10dvh] h-[15dvh] h-[18dvh] h-[35dvh] h-[50dvh] h-[60dvh] h-[63.5dvh] h-[65dvh] h-[70dvh] h-[85%]
+  max-sm:top-[32.5dvh] max-sm:top-[60dvh] sm:top-[27.5dvh] md:top-[28dvh] md:top-[63.5dvh] xl:top-[25.5dvh] xl:top-[15dvh]
+  top-0 top-[2.5dvh] top-[10dvh] top-[15dvh] top-[100%] bottom-0 bottom-[5dvh]
+  max-sm:h-full max-md:h-[60dvh] md:h-[63.5dvh] xl:h-[19dvh]
+  max-sm:top-[-17.5dvh] max-md:top-[-22.5dvh] md:top-[-22dvh] xl:top-[-24.5dvh]
+  top-[32.5dvh] top-[60dvh]
   min-w-[350px] min-h-[350px] min-w-[950px]
-  px-2 px-3 px-4 py-2 py-[1vh] pb-0
+  px-2 px-3 px-4 py-2 py-[1dvh] pb-0
   mx-auto mx-[5%] ml-4 mr-4
-  text-center text-left text-[1.5vh] text-[clamp(.05rem,1rem,2.5vh)] text-[clamp(.25rem,1rem,2.5vh)] text-[clamp(.5rem,1rem,3.5vh)] text-[clamp(.5rem,1.25rem,7vh)]
-  leading-none leading-[2.5vh] leading-[3vh] leading-[3.5vh] leading-[4vh] leading-[5vh] leading-[7vh]
+  text-center text-left text-[1.5dvh] text-[clamp(.05rem,1rem,2.5dvh)] text-[clamp(.25rem,1rem,2.5dvh)] text-[clamp(.5rem,1rem,3.5dvh)] text-[clamp(.5rem,1.25rem,7dvh)]
+  leading-none leading-[2.5dvh] leading-[3dvh] leading-[3.5dvh] leading-[4dvh] leading-[5dvh] leading-[7dvh]
   bg-white bg-black bg-slate-300 bg-slate-400 bg-green-200 bg-green-300 bg-green-500 bg-green-600 bg-green-700 bg-yellow-500 bg-red-500
   text-white text-gray-400 text-gray-500 text-gray-700 text-red-500 text-red-600 text-blue-400 text-green-500 text-green-600 text-green-700
   border border-2 border-white border-green-200 border-green-500 border-red-500
@@ -411,15 +414,15 @@ console.log("Atrocities Length:", atrocities.length);
   space-y-2 space-y-4 space-x-4
   hover:bg-green-600 hover:bg-red-600 hover:bg-blue-600 hover:text-gray-400
   focus:outline-none
-  max-h-full max-w-full min-h-[18vh] min-w-full
+  max-h-full max-w-full min-h-[18dvh] min-w-full h-[100dvh]
 "></div>
 <div class="hidden another-dummy"></div>
 
 
-<!-- <div class="h-screen overflow-y-scroll snap-y snap-mandatory">
-    <section class="h-screen bg-red-300 snap-start"></section>
-    <section class="h-screen bg-green-300 snap-start"></section>
-    <section class="h-screen bg-blue-300 snap-start"></section>
+<!-- <div class="h-[100dvh] overflow-y-scroll snap-y snap-mandatory">
+    <section class="h-[100dvh] bg-red-300 snap-start"></section>
+    <section class="h-[100dvh] bg-green-300 snap-start"></section>
+    <section class="h-[100dvh] bg-blue-300 snap-start"></section>
   </div> -->
   
 
@@ -504,25 +507,25 @@ try {
 // ${state===yourState?`<button class="report-icon">❗</button>`:""}
 // 
 function generateMobilePost(state, post, index) {
-return `<div data-index="${index}" class="main w-full flex flex-col h-screen  max-sm:pt-[5vh] sm:pt-[15vh] md:pt-[14vh] xl:pt-[19vh] snap-start snap-always">  
-<div class="post-card w-[80%] h-[70vh] flex flex-row justify-center items-center mx-auto my-auto">
+return `<div data-index="${index}" class="main w-full flex flex-col h-[100dvh]  max-sm:pt-[5dvh] sm:pt-[15dvh] md:pt-[14dvh] xl:pt-[19dvh] snap-start snap-always">  
+<div class="post-card w-[80%] h-[70dvh] flex flex-row justify-center items-center mx-auto my-auto">
   <div class="image-side w-full  bg-black relative h-full flex flex-col justify-center items-center">
-    <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75vh)] leading-[4vh] bg-green-200 h-[4vh]">By: ${post.Photographer_name}</a>
-    ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4vh]">❗</button>`:""}
-      <div class="image-container max-md:h-[60vh] md:h-[63.5vh] absolute top-0 transition-all duration-700 ease-in-out w-full">
+    <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
+    ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4dvh]">❗</button>`:""}
+      <div class="image-container max-md:h-[60dvh] md:h-[63.5dvh] absolute top-0 transition-all duration-700 ease-in-out w-full">
         <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
       </div>
-  <div class="carousel-preview max-md:h-[10vh] h-[6.5vh] bg-green-200 absolute max-md:top-[60vh] md:top-[63.5vh] transition-all duration-700 ease-in-out w-full">
-      <div class="just-a-wrapper h-full w-full px-2 py-[1vh] md:pb-0 flex flex-col">
-      <p class="text-gray-700 max-md:line-clamp-2 md:line-clamp-1 overflow-hidden text-[clamp(.25rem,1rem,2.5vh)] leading-[2.5vh]">
+  <div class="carousel-preview max-md:h-[10dvh] h-[6.5dvh] bg-green-200 absolute max-md:top-[60dvh] md:top-[63.5dvh] transition-all duration-700 ease-in-out w-full">
+      <div class="just-a-wrapper h-full w-full px-2 py-[1dvh] md:pb-0 flex flex-col">
+      <p class="text-gray-700 max-md:line-clamp-2 md:line-clamp-1 overflow-hidden text-[clamp(.25rem,1rem,2.5dvh)] leading-[2.5dvh]">
         <span class="font-bold">At the Moment: </span><span>${post.At_the_moment}</span>
       </p>
-      <a class="read-more-link text-blue-400 text-[clamp(.05rem,1rem,2.5vh)] h-[3vh]">Full info</a>
+      <a class="read-more-link text-blue-400 text-[clamp(.05rem,1rem,2.5dvh)] h-[3dvh]">Full info</a>
       </div>
   </div>
     ${
     state !== yourState
-      ? `  <div class="social-icons hidden max-md:flex w-full absolute top-[100%] justify-evenly items-center h-[4vh]">
+      ? `  <div class="social-icons hidden max-md:flex w-full absolute top-[100%] justify-evenly items-center h-[4dvh]">
         <a href="#" class="">I</a>
         <a href="#" class="">F</a>
         <a href="#" class="">W</a>
@@ -531,16 +534,16 @@ return `<div data-index="${index}" class="main w-full flex flex-col h-screen  ma
       (() => {
           switch (post.Rejected) {
             case "false":
-              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-yellow-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+              return `<div class="approval-status w-full absolute top-[100%] h-[3dvh] xl:top-0 bg-yellow-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Pending Approval</p>
                       </div>`;
             case "approved":
-              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-green-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+              return `<div class="approval-status w-full absolute top-[100%] h-[3dvh] xl:top-0 bg-green-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Approved</p>
                       </div>`;
             default:
-              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-red-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+              return `<div class="approval-status w-full absolute top-[100%] h-[3dvh] xl:top-0 bg-red-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
                       </div>`;
           }
         })()
@@ -551,17 +554,17 @@ return `<div data-index="${index}" class="main w-full flex flex-col h-screen  ma
 }
 
 function generateDesktopPost(state, post, index) {
-return `<div data-index="${index}" data-animated="false" class="main w-full flex flex-col h-screen snap-start snap-always min-w-[950px] ${state===yourState?"relative pt-[12vh]":"pt-[15vh]"}">
+return `<div data-index="${index}" data-animated="false" class="main w-full flex flex-col h-[100dvh] snap-start snap-always min-w-[950px] ${state===yourState?"relative pt-[12dvh]":"pt-[15dvh]"}">
       
   
-<div class="post-card w-[80%] h-[65vh] flex flex-row justify-center items-center mx-auto my-auto">
+<div class="post-card w-[80%] h-[65dvh] flex flex-row justify-center items-center mx-auto my-auto">
 
   <div class="image-side w-[60%] bg-black relative h-full flex flex-col justify-center items-center z-10">
-      <a href="#" class="PhotographerIdxl-placeholder block invisible h-[2.5vh]"></a>
-      <div class="image-container h-[60vh]">
+      <a href="#" class="PhotographerIdxl-placeholder block invisible h-[2.5dvh]"></a>
+      <div class="image-container h-[60dvh]">
         <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
       </div>
-      <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5vh] text-[1.5vh] leading-[2.5vh]">By: ${post.Photographer_name}</a>
+      <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
   </div>
 
   <div class="info-side w-[40%] flex flex-col bg-green-300 h-full ${(state==homeState && !state.viewed.includes(index))?"-translate-x-full opacity-0 transition-all duration-700 ease-in-out":""}">
@@ -569,34 +572,34 @@ return `<div data-index="${index}" data-animated="false" class="main w-full flex
     <div class="info-carousel w-full h-[85%] relative overflow-hidden transition-all duration-700 ease-in-out">
        <div class="carousel-container w-full h-full flex transition-transform duration-500 ease-in-out ">
         <div class="first-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-          <div class="slide1-content min-h-[18vh] max-h-full"> 
-            <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>At The Moment</span></div>
-            <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.At_the_moment}</p>
+          <div class="slide1-content min-h-[18dvh] max-h-full"> 
+            <div class="font-bold h-[7.5dvh]  text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>At The Moment</span></div>
+            <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${post.At_the_moment}</p>
           </div>
           <div class="flex-auto bg-black"></div> 
         </div>
   
         <div class="second-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-          <div class="slide2-content min-h-[18vh] max-h-full"> 
-            <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Facts</span></div>
+          <div class="slide2-content min-h-[18dvh] max-h-full"> 
+            <div class="font-bold h-[7.5dvh]  text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Facts</span></div>
             
-            <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Facts}</p>
+            <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${post.Facts}</p>
           </div>
           <div class="flex-auto bg-black"></div> 
         </div>
   
         <div class="third-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-          <div class="slide3-content min-h-[18vh] max-h-full"> 
-            <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Atrocities</span></div><!--made 7vh highest size for the text below to not overlay on this no matter how small the window is resized-->
+          <div class="slide3-content min-h-[18dvh] max-h-full"> 
+            <div class="font-bold h-[7.5dvh]  text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Atrocities</span></div><!--made 7dvh highest size for the text below to not overlay on this no matter how small the window is resized-->
             
-            <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Atrocities}</p>
+            <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${post.Atrocities}</p>
           </div>
           <div class="flex-auto bg-black"></div> 
         </div>
   
     </div>
-    <button class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white  rounded-full focus:outline-none">←</button>
-    <button class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white  rounded-full focus:outline-none">→</button>
+    <button class="prev-slide absolute h-[5dvh] left-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-300 text-white  rounded-full focus:outline-none">←</button>
+    <button class="next-slide absolute h-[5dvh] right-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-400 text-white  rounded-full focus:outline-none">→</button>
   </div>
 
   <div class="button-section h-[15%] flex justify-center items-center">
@@ -612,16 +615,16 @@ ${state === yourState?
 (() => {
           switch (post.Rejected) {
             case "false":
-              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-yellow-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+              return `<div class="approval-status w-full absolute bottom-[5dvh] h-[3dvh] bg-yellow-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Pending Approval</p>
                       </div>`;
             case "approved":
-              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-green-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+              return `<div class="approval-status w-full absolute bottom-[5dvh] h-[3dvh] bg-green-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Approved</p>
                       </div>`;
             default:
-              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-red-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+              return `<div class="approval-status w-full absolute bottom-[5dvh] h-[3dvh] bg-red-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
                       </div>`;
           }
         })()
@@ -839,24 +842,24 @@ function fillEmptyPosts(state, currentpostat) {
 
         const innerHTML = isMobile
           ? `
-            <div class="post-card w-[80%] h-[70vh] flex flex-row justify-center items-center mx-auto my-auto">
+            <div class="post-card w-[80%] h-[70dvh] flex flex-row justify-center items-center mx-auto my-auto">
               <div class="image-side w-full bg-black relative h-full flex flex-col justify-center items-center">
-                <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75vh)] leading-[4vh] bg-green-200 h-[4vh]">By: ${post.Photographer_name}</a>
-                    ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4vh]">❗</button>`:""}
-                <div class="image-container max-md:h-[60vh] md:h-[63.5vh] absolute top-0 transition-all duration-700 ease-in-out border-2 border-white">
+                <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
+                    ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4dvh]">❗</button>`:""}
+                <div class="image-container max-md:h-[60dvh] md:h-[63.5dvh] absolute top-0 transition-all duration-700 ease-in-out border-2 border-white">
                   <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
                 </div>
-                <div class="carousel-preview max-md:h-[10vh] h-[6.5vh] bg-green-200 absolute max-md:top-[60vh] md:top-[63.5vh] transition-all duration-700 ease-in-out w-full">
-                  <div class="just-a-wrapper h-full w-full px-2 py-[1vh] md:pb-0 flex flex-col">
-                    <p class="text-gray-700 max-md:line-clamp-2 md:line-clamp-1 overflow-hidden text-[clamp(.25rem,1rem,2.5vh)] leading-[2.5vh]">
+                <div class="carousel-preview max-md:h-[10dvh] h-[6.5dvh] bg-green-200 absolute max-md:top-[60dvh] md:top-[63.5dvh] transition-all duration-700 ease-in-out w-full">
+                  <div class="just-a-wrapper h-full w-full px-2 py-[1dvh] md:pb-0 flex flex-col">
+                    <p class="text-gray-700 max-md:line-clamp-2 md:line-clamp-1 overflow-hidden text-[clamp(.25rem,1rem,2.5dvh)] leading-[2.5dvh]">
                       <span class="font-bold">At the Moment: </span><span>${post.At_the_moment}</span>
                     </p>
-                    <a class="read-more-link text-blue-400 text-[clamp(.05rem,1rem,2.5vh)] h-[3vh]">Full info</a>
+                    <a class="read-more-link text-blue-400 text-[clamp(.05rem,1rem,2.5dvh)] h-[3dvh]">Full info</a>
                   </div>
                 </div>
     ${
     state !== yourState
-      ? `  <div class="social-icons hidden max-md:flex w-full absolute top-[100%] justify-evenly items-center h-[4vh]">
+      ? `  <div class="social-icons hidden max-md:flex w-full absolute top-[100%] justify-evenly items-center h-[4dvh]">
         <a href="#" class="">I</a>
         <a href="#" class="">F</a>
         <a href="#" class="">W</a>
@@ -865,16 +868,16 @@ function fillEmptyPosts(state, currentpostat) {
       (() => {
           switch (post.Rejected) {
             case "false":
-              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-yellow-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+              return `<div class="approval-status w-full absolute top-[100%] h-[3dvh] xl:top-0 bg-yellow-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Pending Approval</p>
                       </div>`;
             case "approved":
-              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-green-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+              return `<div class="approval-status w-full absolute top-[100%] h-[3dvh] xl:top-0 bg-green-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Approved</p>
                       </div>`;
             default:
-              return `<div class="approval-status w-full absolute top-[100%] h-[3vh] xl:top-0 bg-red-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+              return `<div class="approval-status w-full absolute top-[100%] h-[3dvh] xl:top-0 bg-red-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
                       </div>`;
           }
         })()
@@ -882,41 +885,41 @@ function fillEmptyPosts(state, currentpostat) {
               </div>
             </div>`
           : `
-            <div class="post-card w-[80%] h-[65vh] flex flex-row justify-center items-center mx-auto my-auto">
+            <div class="post-card w-[80%] h-[65dvh] flex flex-row justify-center items-center mx-auto my-auto">
               <div class="image-side w-[60%] bg-black relative h-full flex flex-col justify-center items-center">
-                <a href="#" class="PhotographerIdxl-placeholder block invisible h-[2.5vh]"></a>
-                <div class="image-container h-[60vh]">
+                <a href="#" class="PhotographerIdxl-placeholder block invisible h-[2.5dvh]"></a>
+                <div class="image-container h-[60dvh]">
                   <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
                 </div>
-                ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5vh] text-[1.5vh] leading-[2.5vh]">By: ${post.Photographer_name}</a>
+                ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
               </div>
               <div class="info-side w-[40%] flex flex-col bg-green-300 h-full">
                 <div class="info-carousel w-full h-[85%] relative overflow-hidden transition-all duration-700 ease-in-out">
                   <div class="carousel-container w-full h-full flex transition-transform duration-500 ease-in-out">
                     <div class="first-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-                      <div class="slide1-content min-h-[18vh] max-h-full">
-                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>At The Moment</span></div>
-                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.At_the_moment}</p>
+                      <div class="slide1-content min-h-[18dvh] max-h-full">
+                        <div class="font-bold h-[7.5dvh] text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>At The Moment</span></div>
+                        <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${post.At_the_moment}</p>
                       </div>
                       <div class="flex-auto bg-black"></div>
                     </div>
                     <div class="second-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-                      <div class="slide2-content min-h-[18vh] max-h-full">
-                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Facts</span></div>
-                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Facts}</p>
+                      <div class="slide2-content min-h-[18dvh] max-h-full">
+                        <div class="font-bold h-[7.5dvh] text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Facts</span></div>
+                        <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${post.Facts}</p>
                       </div>
                       <div class="flex-auto bg-black"></div>
                     </div>
                     <div class="third-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-                      <div class="slide3-content min-h-[18vh] max-h-full">
-                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Atrocities</span></div>
-                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${post.Atrocities}</p>
+                      <div class="slide3-content min-h-[18dvh] max-h-full">
+                        <div class="font-bold h-[7.5dvh] text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Atrocities</span></div>
+                        <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${post.Atrocities}</p>
                       </div>
                       <div class="flex-auto bg-black"></div>
                     </div>
                   </div>
-                  <button class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white rounded-full focus:outline-none">←</button>
-                  <button class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white rounded-full focus:outline-none">→</button>
+                  <button class="prev-slide absolute h-[5dvh] left-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-300 text-white rounded-full focus:outline-none">←</button>
+                  <button class="next-slide absolute h-[5dvh] right-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-400 text-white rounded-full focus:outline-none">→</button>
                 </div>
                 <div class="button-section h-[15%] flex justify-center items-center">
                   ${state===yourState?`<button class="report-icon text-red-600 border-2 border-red-500 px-3 h-1/2 w-1/3 text-center text-lg">Report</button>`
@@ -929,16 +932,16 @@ ${state === yourState?
 (() => {
           switch (post.Rejected) {
             case "false":
-              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-yellow-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Pending Approval</p>
+              return `<div class="approval-status w-full absolute bottom-[5dvh] h-[3dvh] bg-yellow-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Pending Approval</p>
                       </div>`;
             case "approved":
-              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-green-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)]">Approved</p>
+              return `<div class="approval-status w-full absolute bottom-[5dvh] h-[3dvh] bg-green-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)]">Approved</p>
                       </div>`;
             default:
-              return `<div class="approval-status w-full absolute bottom-[5vh] h-[3vh] bg-red-500 text-center">
-              <p class="w-full leading-[3vh] text-[clamp(.25rem,1rem,2.5vh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
+              return `<div class="approval-status w-full absolute bottom-[5dvh] h-[3dvh] bg-red-500 text-center">
+              <p class="w-full leading-[3dvh] text-[clamp(.25rem,1rem,2.5dvh)] overflow-x-auto whitespace-nowrap px-2">Rejected : ${post.Rejected}</p>
                       </div>`;
           }
         })()
@@ -1168,7 +1171,7 @@ function setupReadMoreListener(state, postEl, index) {
   const readMoreLink = postEl.querySelector(".read-more-link");
   const imageContainer = postEl.querySelector(".image-container");
   const carousel = postEl.querySelector(".carousel-preview");
-  const bottom = document.getElementById("bottom-7.5vh");
+  const bottom = document.getElementById("bottom-7.5dvh");
   const previewContent = postEl.querySelector(".just-a-wrapper");
 
   if (!readMoreLink || !imageContainer || !carousel || !previewContent) return;
@@ -1179,14 +1182,14 @@ function setupReadMoreListener(state, postEl, index) {
     state.wrapper.classList.toggle("!overflow-y-hidden");//to make the page non-scrollable while on full screen
 
     imageContainer.classList.add(
-      "max-sm:top-[-17.5vh]", "max-md:top-[-22.5vh]",
-      "md:top-[-22vh]", "xl:top-[-24.5vh]","w-screen", "!h-[50vh]", "z-30", "bg-black"
+      "max-sm:top-[-17.5dvh]", "max-md:top-[-22.5dvh]",
+      "md:top-[-22dvh]", "xl:top-[-24.5dvh]","w-screen", "!h-[50dvh]", "z-30", "bg-black"
     );
 
-    carousel.classList.remove("max-sm:top-[60vh]", "md:top-[63.5vh]");
+    carousel.classList.remove("max-sm:top-[60dvh]", "md:top-[63.5dvh]");
     carousel.classList.add(
-      "max-sm:top-[32.5vh]", "sm:top-[27.5vh]", "md:top-[28vh]","xl:top-[25.5vh]", "w-screen",
-      "!h-[42.5vh]", "z-30"
+      "max-sm:top-[32.5dvh]", "sm:top-[27.5dvh]", "md:top-[28dvh]","xl:top-[25.5dvh]", "w-screen",
+      "!h-[42.5dvh]", "z-30"
     );
 
     previewContent.classList.add("hidden");
@@ -1194,59 +1197,59 @@ function setupReadMoreListener(state, postEl, index) {
     const fullCarouselHtml = `<div class="info-carousel w-full h-full relative overflow-hidden transition-all duration-700 ease-in-out">
                   <div class="carousel-container w-full h-full flex transition-transform duration-500 ease-in-out">
                     <div class="first-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-                      <div class="slide1-content min-h-[18vh] max-h-full">
-                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>At The Moment</span></div>
-                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${state.posts[index].At_the_moment}</p>
+                      <div class="slide1-content min-h-[18dvh] max-h-full">
+                        <div class="font-bold h-[7.5dvh] text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>At The Moment</span></div>
+                        <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${state.posts[index].At_the_moment}</p>
                       </div>
                       <div class="flex-auto bg-black"></div>
                     </div>
                     <div class="second-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-                      <div class="slide2-content min-h-[18vh] max-h-full">
-                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Facts</span></div>
-                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${state.posts[index].Facts}</p>
+                      <div class="slide2-content min-h-[18dvh] max-h-full">
+                        <div class="font-bold h-[7.5dvh] text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Facts</span></div>
+                        <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${state.posts[index].Facts}</p>
                       </div>
                       <div class="flex-auto bg-black"></div>
                     </div>
                     <div class="third-slide carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-                      <div class="slide3-content min-h-[18vh] max-h-full">
-                        <div class="font-bold h-[7.5vh] text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Atrocities</span></div>
-                        <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">${state.posts[index].Atrocities}</p>
+                      <div class="slide3-content min-h-[18dvh] max-h-full">
+                        <div class="font-bold h-[7.5dvh] text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Atrocities</span></div>
+                        <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">${state.posts[index].Atrocities}</p>
                       </div>
                       <div class="flex-auto bg-black"></div>
                     </div>
                   </div>
-                  <button class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white rounded-full focus:outline-none">←</button>
-                  <button class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white rounded-full focus:outline-none">→</button>
+                  <button class="prev-slide absolute h-[5dvh] left-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-300 text-white rounded-full focus:outline-none">←</button>
+                  <button class="next-slide absolute h-[5dvh] right-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-400 text-white rounded-full focus:outline-none">→</button>
                 </div>`;
     
     // `<div id="info-carousel" class="w-full h-full relative overflow-hidden transition-all duration-700 ease-in-out opacity-0">
     //                 <div id="carousel-container" class="w-full h-full flex transition-transform duration-500 ease-in-out ">
     //                   <div id="first-slide" class="carousel-slide min-w-full max-h-full px-6 flex flex-col bg-green-300">
-    //                     <div id="slide1-content" class="min-h-[18vh] max-h-full"> <!--min-h-[18vh]-> 3.5*3+7.5 to leave space for 3 lines and heading at least-->
-    //                       <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Slide 1 Title</span></div>
-    //                       <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amdolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, </p>
+    //                     <div id="slide1-content" class="min-h-[18dvh] max-h-full"> <!--min-h-[18dvh]-> 3.5*3+7.5 to leave space for 3 lines and heading at least-->
+    //                       <div class="font-bold h-[7.5dvh]  text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Slide 1 Title</span></div>
+    //                       <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amdolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, </p>
     //                     </div>
     //                     <div class="flex-auto bg-black"></div> 
     //                   </div>
                 
     //                   <div id="second-slide" class="carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-    //                     <div id="slide2-content" class="min-h-[18vh] max-h-full"> 
-    //                       <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Slide 2 Title</span></div>
-    //                       <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem ipsum dolor </p>
+    //                     <div id="slide2-content" class="min-h-[18dvh] max-h-full"> 
+    //                       <div class="font-bold h-[7.5dvh]  text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Slide 2 Title</span></div>
+    //                       <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem ipsum dolor </p>
     //                     </div>
     //                     <div class="flex-auto bg-black"></div> 
     //                   </div>
                 
     //                   <div id="third-slide" class="carousel-slide min-w-full max-h-full px-6 flex flex-col bg-slate-300">
-    //                     <div id="slide3-content" class="min-h-[18vh] max-h-full">
-    //                       <div class="font-bold h-[7.5vh]  text-[clamp(.5rem,1.25rem,7vh)] flex justify-center items-center"><span>Slide 3 Title</span></div>
-    //                       <p class="text-gray-700 max-h-[35vh] overflow-y-auto text-[clamp(.5rem,1rem,3.5vh)] leading-[3.5vh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem Lorem ipsum dolor sit sit amet,Loremamet,Lorem Lorem ipsum dolor sit sit amet,Loremamet,Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem </p>
+    //                     <div id="slide3-content" class="min-h-[18dvh] max-h-full">
+    //                       <div class="font-bold h-[7.5dvh]  text-[clamp(.5rem,1.25rem,7dvh)] flex justify-center items-center"><span>Slide 3 Title</span></div>
+    //                       <p class="text-gray-700 max-h-[35dvh] overflow-y-auto text-[clamp(.5rem,1rem,3.5dvh)] leading-[3.5dvh]">Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem Lorem ipsum dolor sit sit amet,Loremamet,Lorem Lorem ipsum dolor sit sit amet,Loremamet,Lorem  Lorem ipsum dolor sit sit amet,Loremamet,Lorem </p>
     //                     </div>
     //                     <div class="flex-auto bg-black"></div> 
     //                   </div>
     //               </div>
-    //               <button id="prev-slide" class="prev-slide absolute h-[5vh] left-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-300 text-white  rounded-full focus:outline-none">←</button>
-    //               <button id="next-slide" class="next-slide absolute h-[5vh] right-2 top-[2.5vh] transform -translate-y-1/2 bg-slate-400 text-white  rounded-full focus:outline-none">→</button>
+    //               <button id="prev-slide" class="prev-slide absolute h-[5dvh] left-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-300 text-white  rounded-full focus:outline-none">←</button>
+    //               <button id="next-slide" class="next-slide absolute h-[5dvh] right-2 top-[2.5dvh] transform -translate-y-1/2 bg-slate-400 text-white  rounded-full focus:outline-none">→</button>
     //             </div>`;
 
                 const full_carousel_wrapper = document.createElement("div");
@@ -1282,18 +1285,18 @@ setTimeout(() => {
     const goBackHandler = () => {
       // Revert image container classes
       imageContainer.classList.remove(
-        "xl:w-full", "max-sm:top-[-17.5vh]", "max-md:top-[-22.5vh]",
-        "md:top-[-22vh]", "xl:top-[-24.5vh]", "w-screen", "!h-[50vh]", "bg-black"
+        "xl:w-full", "max-sm:top-[-17.5dvh]", "max-md:top-[-22.5dvh]",
+        "md:top-[-22dvh]", "xl:top-[-24.5dvh]", "w-screen", "!h-[50dvh]", "bg-black"
       );
 
       setTimeout(() => imageContainer.classList.remove("z-30"),700);//removed it later to lay over the header while animating back
       
 
       // Revert carousel preview
-      carousel.classList.add("max-sm:top-[60vh]", "md:top-[63.5vh]");
+      carousel.classList.add("max-sm:top-[60dvh]", "md:top-[63.5dvh]");
       carousel.classList.remove(
-        "max-sm:top-[32.5vh]", "sm:top-[27.5vh]", "md:top-[28vh]",
-        "xl:top-[25.5vh]", "w-screen", "!h-[42.5vh]", "z-30"
+        "max-sm:top-[32.5dvh]", "sm:top-[27.5dvh]", "md:top-[28dvh]",
+        "xl:top-[25.5dvh]", "w-screen", "!h-[42.5dvh]", "z-30"
       );
 
       previewContent.classList.remove("hidden");
@@ -1515,7 +1518,7 @@ async function startYoursSection() {
   const name = localStorage.getItem("photographer-name");
   if (!name) {
 
-    yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3vh)]">
+    yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3dvh)]">
       <p class="mb-4 font-semibold text-red-500">No user name found in this Browser-Account/Browser/Device</p>
       <p class="mb-6">Have you uploaded to Green Frames before?</p>
       <div class="flex gap-4">
@@ -1559,7 +1562,7 @@ async function startYoursSection() {
   }else{
     document.getElementById("yours-heading").innerHTML = `${name} <a id="change-user">=></a>`;
     document.getElementById("change-user").onclick = () => {
-      yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3vh)]">
+      yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3dvh)]">
       <p class="mb-4 font-semibold text-red-500">Are you sure you want to change the user?</p>
       <div class="flex gap-4">
         <button id="yesBtn" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Yes</button>
@@ -1788,7 +1791,7 @@ favoriteState.posts = favorites
   favoriteState.maxLoadedIndex = -1;
 
   if (favoriteState.posts.length === 0) {
-    favoriteState.wrapper.innerHTML = `<p class="text-center pt-[50vh]">You haven't added any favorites yet. Tap the ☆ icon on a post to favorite it!</p>`;
+    favoriteState.wrapper.innerHTML = `<p class="text-center pt-[50dvh]">You haven't added any favorites yet. Tap the ☆ icon on a post to favorite it!</p>`;
     return;
   }
 
