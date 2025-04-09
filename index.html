@@ -564,7 +564,7 @@ return `<div data-index="${index}" data-animated="false" class="main w-full flex
       <div class="image-container h-[60dvh]">
         <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
       </div>
-      <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
+      <a ${post.Social?`href=${post.Social} target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
   </div>
 
   <div class="info-side w-[40%] flex flex-col bg-green-300 h-full ${(state==homeState && !state.viewed.includes(index))?"-translate-x-full opacity-0 transition-all duration-700 ease-in-out":""}">
@@ -844,7 +844,7 @@ function fillEmptyPosts(state, currentpostat) {
           ? `
             <div class="post-card w-[80%] h-[70dvh] flex flex-row justify-center items-center mx-auto my-auto">
               <div class="image-side w-full bg-black relative h-full flex flex-col justify-center items-center">
-                <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
+                <a ${post.Social?`href=${post.Social} target="_blank"`:""} class="PhotographerId block w-full absolute bottom-[100%] text-center text-[clamp(.5rem,1rem,3.75dvh)] leading-[4dvh] bg-green-200 h-[4dvh]">By: ${post.Photographer_name}</a>
                     ${state===yourState?`<button class="report-icon absolute bottom-[100%] right-0 h-[4dvh]">❗</button>`:""}
                 <div class="image-container max-md:h-[60dvh] md:h-[63.5dvh] absolute top-0 transition-all duration-700 ease-in-out border-2 border-white">
                   <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
@@ -891,7 +891,7 @@ function fillEmptyPosts(state, currentpostat) {
                 <div class="image-container h-[60dvh]">
                   <img src="https://res.cloudinary.com/dumtyosqg/image/upload/${post.publicId}" loading="lazy" alt="something went wrong!" class="h-full w-auto max-w-full object-contain mx-auto">
                 </div>
-                <a ${post.Social?`href=${post.Social}target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
+                <a ${post.Social?`href=${post.Social} target="_blank"`:""} class="PhotographerIdxl block w-full text-white text-center h-[2.5dvh] text-[1.5dvh] leading-[2.5dvh]">By: ${post.Photographer_name}</a>
               </div>
               <div class="info-side w-[40%] flex flex-col bg-green-300 h-full">
                 <div class="info-carousel w-full h-[85%] relative overflow-hidden transition-all duration-700 ease-in-out">
