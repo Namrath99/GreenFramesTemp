@@ -235,6 +235,10 @@
     alert("Image is required and must be under 10MB.");
     return;
   }
+  if(photographerInput.value.length < 4){
+    alert("Photographer name must be 4 characters or more.");
+    return;
+  }
 
   // Generate and store username if not already stored
   let storedName = localStorage.getItem("photographer-name");
@@ -1547,7 +1551,7 @@ async function startYoursSection() {
 
     document.getElementById("submitUsername").onclick = () => {
       const enteredName = document.getElementById("usernameInput").value.trim();
-      if (!enteredName || enteredName.length < 6) {
+      if (!enteredName || !/.*\d{4}$/.test(enteredName) || enteredName.length < 8) {
         alert("Please enter a valid name.");
         return;
       }
@@ -1587,7 +1591,7 @@ async function startYoursSection() {
 
     document.getElementById("submitUsername").onclick = () => {
       const enteredName = document.getElementById("usernameInput").value.trim();
-      if (!enteredName || enteredName.length < 6) {
+      if (!enteredName || !/.*\d{4}$/.test(enteredName) || enteredName.length < 8) {
         alert("Please enter a valid name.");
         return;
       }
