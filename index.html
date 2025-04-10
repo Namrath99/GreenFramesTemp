@@ -246,6 +246,8 @@
     }
      if (!/.*\d{4}$/.test(inputName)) {
       storedName = inputName + Date.now().toString().slice(-4);
+  }else{
+    storedName = inputName
   }
     localStorage.setItem("photographer-name", storedName);
     photographerInput.value = storedName;
@@ -299,7 +301,7 @@ console.log("Atrocities Length:", atrocities.length);
     });
 
     if (!response.ok) throw new Error("Upload failed");
-    AfterUpload.innerHTML = `✅ Image uploaded successfully!<br>By: ${localStorage.getItem("photographer-name")}<br>(your Nature given name, remember to use it in another Browser-Account/Browser/Device)`;
+    AfterUpload.innerHTML = `✅ Image uploaded successfully!<br>By: ${localStorage.getItem("photographer-name") || photographerInput.value}<br>(your Nature given name, remember to use it in another Browser-Account/Browser/Device)`;// || photographerInput.value is a fallback if the user types in his username that he remembered
     uploadForm.classList.add("hidden");
     uploadMoreBtn.classList.remove("hidden");
   } catch (err) {
@@ -1562,7 +1564,7 @@ async function startYoursSection() {
 
 
   }else{
-    document.getElementById("yours-heading").innerHTML = `${name} <a id="change-user">=></a>`;
+    document.getElementById("yours-heading").innerHTML = `${name} <a id="change-user">✏️</a>`;
     document.getElementById("change-user").onclick = () => {
       yourState.wrapper.innerHTML = `<div id="usernamePrompt" class="flex flex-col justify-center items-center h-full text-center p-4 text-[clamp(.5rem,1.25rem,3dvh)]">
       <p class="mb-4 font-semibold text-red-500">Are you sure you want to change the user?</p>
@@ -1600,7 +1602,7 @@ async function startYoursSection() {
 
   yourState.posts = await yourPostsOnly(name);
   if (yourState.posts.length === 0) {
-    yourState.wrapper.innerHTML = "<p class='text-center p-4'>Coudn't find any posts in your name!<br><br>If you just uploaded your first post,<br>Please wait atleast a minute and come back to check progress<br><br><br> If you are trying to see your existing posts in this Browser-Account/Browser/Device,<br>you must have typed your username wrong!<br>you can change the user name by clicking the edit icon next to the current name</p>";
+    yourState.wrapper.innerHTML = "<p class='text-center p-4 pt-[35dvh]'>Coudn't find any posts in your name!<br><br>If you just uploaded your first post,<br>Please wait atleast a minute and come back to check progress<br><br><br> If you are trying to see your existing posts in this Browser-Account/Browser/Device,<br>you must have typed your username wrong!<br>you can change the user name by clicking the edit icon next to the current name</p>";
     return;
   }else{
     console.log(yourState.posts)
