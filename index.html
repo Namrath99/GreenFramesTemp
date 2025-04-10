@@ -237,7 +237,7 @@
   }
 
   // Generate and store username if not already stored
-  // let storedName = localStorage.getItem("photographer-name");
+  let storedName = localStorage.getItem("photographer-name");
   if (!storedName) {
     const inputName = photographerInput.value.trim();
     if (!inputName) {
