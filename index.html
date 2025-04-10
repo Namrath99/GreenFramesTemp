@@ -244,7 +244,9 @@
       alert("Please enter your name.");
       return;
     }
-    storedName = inputName + Date.now().toString().slice(-4);
+     if (!/.*\d{4}$/.test(inputName)) {
+      storedName = inputName + Date.now().toString().slice(-4);
+  }
     localStorage.setItem("photographer-name", storedName);
     photographerInput.value = storedName;
     // photographerInput.readOnly = true;
